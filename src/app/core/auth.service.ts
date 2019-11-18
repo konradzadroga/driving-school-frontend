@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Observable, throwError} from 'rxjs';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class AuthService {
@@ -21,7 +22,12 @@ export class AuthService {
       const signUpForm = {username: username, name: name, surname: surname, email: email, pesel: pesel, birthdate: Date, 
       password: password, roles: roles}
       const options = {responseType: 'text' as 'json'}
-      return this.http.post<any>(this.appUrl + "signup", signUpForm, options)
+      return this.http.post<any>(this.appUrl + "signup", signUpForm).pipe(
+        catchError((err: HttpErrorResponse) => {  
+          return throwError(err.error.message);
+        })
+      )
     }
+
 
 }

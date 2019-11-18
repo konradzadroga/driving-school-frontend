@@ -41,7 +41,9 @@
           <tr>
             <td>
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="Birthdate" [(ngModel)]="birthdate" name="birthdate" required>
+                <input matInput [matDatepicker]="picker" placeholder="Data urodzenia" [(ngModel)]="birthdate" name="birthdate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
             </td>
           </tr>
@@ -50,6 +52,11 @@
               <mat-form-field class="example-full-width">
                 <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" required>
               </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h3>{{errorMsg}}</h3>
             </td>
           </tr></table>
       </form>

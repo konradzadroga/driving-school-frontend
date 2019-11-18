@@ -1,15 +1,4 @@
-<mat-toolbar color="primary">
-    <mat-toolbar-row>
-      <span class="example-fill-remaining-space"></span>
-      <span class="example-spacer"></span>
-  
-      <button mat-button>About</button>
-      <button mat-button>Contact</button>
-    </mat-toolbar-row>
-  </mat-toolbar>
-
-  
-  <mat-card class="example-card">
+<mat-card class="example-card">
     <mat-card-header>
       <mat-card-title>Login</mat-card-title>
     </mat-card-header>
@@ -27,7 +16,13 @@
             <td><mat-form-field class="example-full-width">
               <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" required>
             </mat-form-field></td>
-          </tr></table>
+          </tr>
+          <tr>
+            <td><div *ngIf="loginFailed === true">
+              <p>{{this.errorMsg}}</p>
+            </div></td>
+          </tr>
+        </table>
       </form>
     </mat-card-content>
     <mat-card-actions>

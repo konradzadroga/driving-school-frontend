@@ -5,22 +5,16 @@ import {UserService} from '../app.service';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
   displayedColumns = ['username', 'name', 'surname'];
   username: string;
-  dataSource = new MatTableDataSource<User>();
   constructor(private router: Router, private userService: UserService) {
   }
   ngOnInit(): void {
-    this.userService.getUser().subscribe(
-      data => {
-        this.dataSource.data = data;
-      }
-    )
   }
 
 }

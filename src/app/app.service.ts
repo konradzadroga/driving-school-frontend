@@ -16,8 +16,8 @@ export class UserService {
 
   private url = 'http://localhost:8080/';
 
-  public getUser(): Observable<User[]> {
-    return this.http.get<User[]>(this.url + 'me');
+  public getSignedInUser(): Observable<User> {
+    return this.http.get<User>(this.url + 'me');
   }
 
 }

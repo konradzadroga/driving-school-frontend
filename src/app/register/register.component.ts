@@ -11,6 +11,7 @@ export class RegisterComponent  {
 
   constructor(private router: Router, private authService: AuthService) { }
 
+  public errorMsg;
   username: string;
   name: string;
   surname: string;
@@ -25,7 +26,9 @@ export class RegisterComponent  {
       this.birthdate, this.password, this.roles).subscribe(
       data => {
         this.router.navigate(['login']);
-        console.log(data)
+      },
+      error => {
+        this.errorMsg = error;
       }
     );
   }
