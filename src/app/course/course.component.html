@@ -1,23 +1,60 @@
-<div class="example-container mat-elevation-z8">
-  <mat-table #table [dataSource]="dataSource">
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-button (click)="switchModeToAll()">Wszystkie kursy</button>
+    <button mat-button (click)="switchModeToMine()">Moje kursy</button>
+  </mat-toolbar-row>
+</mat-toolbar>
 
-    <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
-    </ng-container>
+<ng-container *ngIf="mode==='all'">
+  <div class="example-container mat-elevation-z8">
+    <mat-table #table [dataSource]="allCourses">
 
-    <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="description">
-      <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+      </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      <ng-container matColumnDef="places">
+        <mat-header-cell *matHeaderCellDef>Places</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.places}} </mat-cell>
+      </ng-container>
 
-  </mat-table>
-</div>
+      <ng-container matColumnDef="signup">
+        <mat-header-cell *matHeaderCellDef>Zapisz się</mat-header-cell>
+        <mat-cell *matCellDef="let element"><button mat-raised-button color="accent"
+            (click)="signUpForCourse(element.id)"
+            [disabled]="checkIfAlreadyRegistered(element.id)">Zapisz</button></mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="allCoursesDisplayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: allCoursesDisplayedColumns;"></mat-row>
+
+    </mat-table>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="mode==='mine'">
+  <div class="example-container mat-elevation-z8">
+    <mat-table #table [dataSource]="myCourses">
+
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="myCoursesDisplayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: myCoursesDisplayedColumns;"></mat-row>
+
+    </mat-table>
+  </div>
+</ng-container>

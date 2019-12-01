@@ -59,4 +59,9 @@ export class TokenStorage {
     }
     return false;
   }
+
+  reloadPage(): void {
+    window.location.reload();
+  }
+  
 }

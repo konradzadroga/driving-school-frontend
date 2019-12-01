@@ -16,8 +16,16 @@ export class UserService {
 
   private url = 'http://localhost:8080/';
 
+  public getAllUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.url + 'users');
+  }
+
   public getSignedInUser(): Observable<User> {
     return this.http.get<User>(this.url + 'me');
+  }
+
+  public addCourseToUser(id: number): Observable<User> {
+    return this.http.put<User>(this.url + 'users/courses/add/' + id, null);
   }
 
 }

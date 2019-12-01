@@ -1,0 +1,72 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Profil uzytkownika</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-grid-list cols="4" rowHeight="300px">
+            <mat-grid-tile [colspan]=3 [rowspan]=1>
+                <mat-card>
+                    <mat-card-content>
+                        <mat-list>
+                            <div class="row">
+                                <div class="col">
+                                    <mat-list-item>
+                                        Login:
+                                    </mat-list-item>
+                                    <mat-divider></mat-divider>
+                                    <mat-list-item>
+                                        Imię:
+                                    </mat-list-item>
+                                    <mat-divider></mat-divider>
+                                    <mat-list-item>
+                                        Nazwisko:
+                                    </mat-list-item>
+                                    <mat-divider></mat-divider>
+                                    <mat-list-item>
+                                        E-mail:
+                                    </mat-list-item>
+                                    <mat-divider></mat-divider>
+                                    <mat-list-item>
+                                        PESEL:
+                                    </mat-list-item>
+                                    <mat-divider></mat-divider>
+                                    <mat-list-item>
+                                        Data urodzenia:
+                                    </mat-list-item>
+                                </div>
+                                <div class="col">
+                                    <mat-list-item>
+                                        {{user.username}}
+                                    </mat-list-item>
+                                    <mat-divider></mat-divider>
+                                    <mat-list-item>
+                                        {{user.name}}
+                                    </mat-list-item>
+                                    <mat-divider></mat-divider>
+                                    <mat-list-item>
+                                        {{user.surname}}
+                                    </mat-list-item>
+                                    <mat-divider></mat-divider>
+                                    <mat-list-item>
+                                        {{user.email}}
+                                    </mat-list-item>
+                                    <mat-divider></mat-divider>
+                                    <mat-list-item>
+                                        {{user.pesel}}
+                                    </mat-list-item>
+                                    <mat-divider></mat-divider>
+                                    <mat-list-item>
+                                        {{user.birthdate.substring(0,10)}}
+                                    </mat-list-item>
+                                </div>
+                            </div>
+                        </mat-list>
+                    </mat-card-content>
+                </mat-card>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]=1 [rowspan]=1>Tu fota boża będzie</mat-grid-tile>
+            <mat-grid-tile [colspan]=1 [rowspan]=1>LOL</mat-grid-tile>
+            <mat-grid-tile [colspan]=2 [rowspan]=1>Mesle</mat-grid-tile>
+        </mat-grid-list>
+    </mat-card-content>
+</mat-card>

@@ -10,8 +10,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-  displayedColumns = ['username', 'name', 'surname'];
-  username: string;
+  
   constructor(private router: Router, private userService: UserService) {
   }
   ngOnInit(): void {

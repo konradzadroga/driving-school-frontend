@@ -14,6 +14,11 @@ import {Interceptor} from "./core/interceptor";
 import {TokenStorage} from "./core/token.storage";
 import { CourseComponent } from './course/course.component';
 import { RegisterComponent } from './register/register.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { HomeComponent } from './home/home.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; 
+import { ImageSlideshowComponent} from './image-slideshow/image-slideshow.component';
+import { UserListComponent } from './user-list/user-list.component'
 
 @NgModule({
   declarations: [
@@ -21,7 +26,11 @@ import { RegisterComponent } from './register/register.component';
     UserComponent,
     LoginComponent,
     CourseComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserProfileComponent,
+    HomeComponent,
+    ImageSlideshowComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +38,9 @@ import { RegisterComponent } from './register/register.component';
     BrowserAnimationsModule,
     CustomMaterialModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
+    
   ],
   providers: [UserService, AuthService, TokenStorage, CourseService,
     {provide: HTTP_INTERCEPTORS,

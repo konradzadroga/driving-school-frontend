@@ -19,7 +19,7 @@ export class AuthService {
 
   attemptRegistration(username: string, name: string, surname: string, email: string, pesel: string, birthdate: Date,
     password: string, roles: string[]): Observable<any> {
-      const signUpForm = {username: username, name: name, surname: surname, email: email, pesel: pesel, birthdate: Date, 
+      const signUpForm = {username: username, name: name, surname: surname, email: email, pesel: pesel, birthdate: birthdate, 
       password: password, roles: roles}
       const options = {responseType: 'text' as 'json'}
       return this.http.post<any>(this.appUrl + "signup", signUpForm).pipe(

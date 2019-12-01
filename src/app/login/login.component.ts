@@ -21,8 +21,8 @@ export class LoginComponent implements OnInit {
   errorMsg: string = '';
 
   ngOnInit() {
-    if (this.loggedIn != false) {
-      this.router.navigate(['user']);
+    if (this.token.getUsername() != null) {
+      this.router.navigate(['home']);
     }
   }
 
@@ -34,18 +34,14 @@ export class LoginComponent implements OnInit {
         this.token.saveUsername(data.username);
         this.token.saveAuthorities(data.authorities);
         this.loggedIn = true;
-        this.reloadPage();
+        this.token.reloadPage();
       },
       error => {
-        console.log(error);
         this.errorMsg = error.error.message;
         this.loginFailed = true;
       }
     );
   }
 
-  reloadPage(): void {
-    window.location.reload();
-  }
 
 }
