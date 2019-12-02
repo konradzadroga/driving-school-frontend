@@ -11,8 +11,8 @@ $default-accent: mat-palette($mat-brown, 600);
 $default-warn: mat-palette($mat-amber, 700);
 $default-theme: mat-light-theme($default-primary, $default-accent, $default-warn);
 
-$dark-primary: mat-palette($mat-deep-purple, 600);
-$dark-accent: mat-palette($mat-deep-purple, 300);
+$dark-primary: mat-palette($mat-indigo, 500);
+$dark-accent: mat-palette($mat-indigo, 700);
 $dark-warn: mat-palette($mat-pink, 800);
 $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 
@@ -24,14 +24,18 @@ $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
   @include angular-material-theme($dark-theme);
 }
 
-.example-icon {
+.full-width {
+  width: 100%;
+}
+
+.my-icon {
   padding: 0 14px;
 }
 
-.example-spacer {
+.my-spacer {
   flex: 1 1 auto;
 }
-.example-card {
+.my-card {
   width: 400px;
   margin: 10% auto;
 }

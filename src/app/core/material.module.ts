@@ -8,13 +8,17 @@ import {
   MatGridListModule,
   MatIconModule,
   MatDividerModule,
-  MatListModule
+  MatListModule,
+  MatSnackBarModule,
+  MatMenuModule
 } from '@angular/material';
 
 @NgModule({
   imports: [CommonModule, MatToolbarModule, MatButtonModule, MatCardModule, MatInputModule, MatDialogModule, MatTableModule, 
-  MatDatepickerModule, MatNativeDateModule, MatGridListModule, MatIconModule, MatDividerModule, MatListModule],
+  MatDatepickerModule, MatNativeDateModule, MatGridListModule, MatIconModule, MatDividerModule, MatListModule, MatSnackBarModule, 
+MatMenuModule],
   exports: [CommonModule, MatToolbarModule, MatButtonModule, MatCardModule, MatInputModule, MatDialogModule, MatTableModule, 
-  MatDatepickerModule, MatNativeDateModule, MatGridListModule, MatIconModule, MatDividerModule, MatListModule],
+  MatDatepickerModule, MatNativeDateModule, MatGridListModule, MatIconModule, MatDividerModule, MatListModule, MatSnackBarModule, 
+MatMenuModule],
 })
 export class CustomMaterialModule { }

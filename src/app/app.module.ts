@@ -7,7 +7,7 @@ import {FormsModule} from '@angular/forms';
 import { UserComponent } from './user/user.component';
 import {AppRoutingModule} from './core/app.routing.module';
 import { LoginComponent } from './login/login.component';
-import {UserService, CourseService} from "./app.service";
+import {UserService, CourseService, MessageService} from "./app.service";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthService} from "./core/auth.service";
 import {Interceptor} from "./core/interceptor";
@@ -18,7 +18,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { HomeComponent } from './home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; 
 import { ImageSlideshowComponent} from './image-slideshow/image-slideshow.component';
-import { UserListComponent } from './user-list/user-list.component'
+import { UserListComponent } from './user-list/user-list.component';
+import { ChatComponent } from './chat/chat.component'
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { UserListComponent } from './user-list/user-list.component'
     UserProfileComponent,
     HomeComponent,
     ImageSlideshowComponent,
-    UserListComponent
+    UserListComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,7 @@ import { UserListComponent } from './user-list/user-list.component'
     NgbModule
     
   ],
-  providers: [UserService, AuthService, TokenStorage, CourseService,
+  providers: [UserService, AuthService, TokenStorage, CourseService, MessageService,
     {provide: HTTP_INTERCEPTORS,
     useClass: Interceptor,
     multi : true}

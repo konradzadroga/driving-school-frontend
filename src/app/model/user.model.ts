@@ -1,5 +1,5 @@
-import {Role} from '../role/role.model';
-import { Course } from '../course/course.model';
+import {Role} from './role.model';
+import { Course } from './course.model';
 
 export interface User {
     id: number;

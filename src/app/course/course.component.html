@@ -27,7 +27,7 @@
       <ng-container matColumnDef="signup">
         <mat-header-cell *matHeaderCellDef>Zapisz się</mat-header-cell>
         <mat-cell *matCellDef="let element"><button mat-raised-button color="accent"
-            (click)="signUpForCourse(element.id)"
+            (click)="signUpForCourse(element.id)" (click)="openSnackBar('Zapisałeś się na kurs', 'OK')"
             [disabled]="checkIfAlreadyRegistered(element.id)">Zapisz</button></mat-cell>
       </ng-container>
 

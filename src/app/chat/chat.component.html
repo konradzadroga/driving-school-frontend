@@ -1,0 +1,140 @@
+<!-- <mat-card>
+    <button mat-icon-button color="warn" id="close-button">
+        <mat-icon>cancel</mat-icon>
+    </button>
+</mat-card> -->
+<div class="messages-container">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="pick-user-container">
+                <mat-toolbar color="accent">
+                    <mat-toolbar-row>
+                        <span>{{showMode}}</span>
+                        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item (click)="setMode('admins')">
+                                <mat-icon>dialpad</mat-icon>
+                                <span>Administratorzy</span>
+                            </button>
+                            <button mat-menu-item (click)="setMode('instructors')">
+                                <mat-icon>voicemail</mat-icon>
+                                <span>Instruktorzy</span>
+                            </button>
+                            <button mat-menu-item (click)="setMode('users')">
+                                <mat-icon>notifications_off</mat-icon>
+                                <span>Użytkownicy</span>
+                            </button>
+                        </mat-menu>
+                    </mat-toolbar-row>
+                </mat-toolbar>
+                <ng-container *ngIf="mode==='admins'">
+                    <mat-table #table [dataSource]="admins">
+                        <ng-container matColumnDef="username">
+                            <mat-header-cell *matHeaderCellDef>Login</mat-header-cell>
+                            <mat-cell *matCellDef="let element" (click)="switchReceiver(element.username)">
+                                {{element.username}} </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="name">
+                            <mat-header-cell *matHeaderCellDef>Imię</mat-header-cell>
+                            <mat-cell *matCellDef="let element" (click)="switchReceiver(element.username)">
+                                {{element.name}} </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="surname">
+                            <mat-header-cell *matHeaderCellDef>Nazwisko</mat-header-cell>
+                            <mat-cell *matCellDef="let element" (click)="switchReceiver(element.username)">
+                                {{element.surname}} </mat-cell>
+                        </ng-container>
+                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: displayedColumns;"
+                            [ngClass]="{ 'selected': row === selectedRow }" (click)="selectRow(row)">
+                        </mat-row>
+                    </mat-table>
+                </ng-container>
+
+                <ng-container *ngIf="mode==='instructors'">
+                    <mat-table #table [dataSource]="instructors">
+                        <ng-container matColumnDef="username">
+                            <mat-header-cell *matHeaderCellDef>Login</mat-header-cell>
+                            <mat-cell *matCellDef="let element" (click)="switchReceiver(element.username)">
+                                {{element.username}} </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="name">
+                            <mat-header-cell *matHeaderCellDef>Imię</mat-header-cell>
+                            <mat-cell *matCellDef="let element" (click)="switchReceiver(element.username)">
+                                {{element.name}} </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="surname">
+                            <mat-header-cell *matHeaderCellDef>Nazwisko</mat-header-cell>
+                            <mat-cell *matCellDef="let element" (click)="switchReceiver(element.username)">
+                                {{element.surname}} </mat-cell>
+                        </ng-container>
+                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: displayedColumns;"
+                            [ngClass]="{ 'selected': row === selectedRow }" (click)="selectRow(row)">
+                        </mat-row>
+                    </mat-table>
+                </ng-container>
+                <ng-container *ngIf="mode==='users'">
+                    <mat-table #table [dataSource]="users">
+                        <ng-container matColumnDef="username">
+                            <mat-header-cell *matHeaderCellDef>Login</mat-header-cell>
+                            <mat-cell *matCellDef="let element" (click)="switchReceiver(element.username)">
+                                {{element.username}} </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="name">
+                            <mat-header-cell *matHeaderCellDef>Imię</mat-header-cell>
+                            <mat-cell *matCellDef="let element" (click)="switchReceiver(element.username)">
+                                {{element.name}} </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="surname">
+                            <mat-header-cell *matHeaderCellDef>Nazwisko</mat-header-cell>
+                            <mat-cell *matCellDef="let element" (click)="switchReceiver(element.username)">
+                                {{element.surname}} </mat-cell>
+                        </ng-container>
+                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: displayedColumns;"
+                            [ngClass]="{ 'selected': row === selectedRow }" (click)="selectRow(row)">
+                        </mat-row>
+                    </mat-table>
+                </ng-container>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="chat-header">
+                <mat-card>
+                    <div dlass="mat-h2-primary" #receiverName>{{receiverUsername}}</div>
+                </mat-card>
+            </div>
+            <div class="chat-container">
+                <ng-container *ngFor="let message of messages">
+                    <span class="message-sender"
+                        [ngClass]="{'message-sender-right': myUsername === message.sender.username}">
+                        {{message.sender.username}}</span>
+                    <mat-card class="message" id="message-{{message.id}}"
+                        [ngClass]="{'message-right': myUsername === message.sender.username}">
+                        {{message.content}}
+                    </mat-card>
+                </ng-container>
+            </div>
+            <div class="new-message-container">
+                <mat-card>
+                    <mat-form-field class="message-form">
+                        <input matInput placeholder="Nowa wiadomość" maxlength=256 #inputmessage
+                            [(ngModel)]="newMessageContent">
+                        <mat-hint>{{inputmessage.value.length}} / 256</mat-hint>
+                    </mat-form-field>
+                    <button mat-icon-button id="send-button" color="primary" (click)="sendMessage()">
+                        <mat-icon>send</mat-icon>
+                    </button>
+                </mat-card>
+            </div>
+        </div>
+    </div>

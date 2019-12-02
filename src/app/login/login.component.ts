@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   errorMsg: string = '';
 
   ngOnInit() {
-    if (this.token.getUsername() != null) {
+    if (this.token.isUserSignedIn()) {
       this.router.navigate(['home']);
     }
   }

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material';
-import { Course } from './course.model';
+import { MatTableDataSource, MatSnackBar } from '@angular/material';
+import { Course } from '../model/course.model';
 import { Router } from '@angular/router';
 import { CourseService, UserService } from '../app.service';
-import { User } from '../user/user.model';
+import { User } from '../model/user.model';
 
 @Component({
   selector: 'app-course',
@@ -19,10 +19,17 @@ export class CourseComponent implements OnInit {
   mode: string = 'all';
   user: User;
 
-  constructor(private router: Router, private courseService: CourseService, private userService: UserService) { }
+  constructor(private router: Router, private courseService: CourseService, private userService: UserService, 
+    private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.refreshCourseInfo();
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+    });
   }
 
   refreshCourseInfo(): void {
