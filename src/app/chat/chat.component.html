@@ -1,8 +1,3 @@
-<!-- <mat-card>
-    <button mat-icon-button color="warn" id="close-button">
-        <mat-icon>cancel</mat-icon>
-    </button>
-</mat-card> -->
 <div class="messages-container">
     <div class="row">
         <div class="col-sm-4">
@@ -10,7 +5,7 @@
                 <mat-toolbar color="accent">
                     <mat-toolbar-row>
                         <span>{{showMode}}</span>
-                        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                        <button mat-icon-button [matMenuTriggerFor]="menu">
                             <mat-icon>more_vert</mat-icon>
                         </button>
                         <mat-menu #menu="matMenu">
@@ -108,11 +103,6 @@
             </div>
         </div>
         <div class="col-sm-8">
-            <div class="chat-header">
-                <mat-card>
-                    <div dlass="mat-h2-primary" #receiverName>{{receiverUsername}}</div>
-                </mat-card>
-            </div>
             <div class="chat-container">
                 <ng-container *ngFor="let message of messages">
                     <span class="message-sender"
