@@ -16,17 +16,15 @@ export class ChatComponent implements OnInit {
   messages: MessageDTO[];
   newMessage: SendMessageDTO;
   newMessageContent: string;
-
   admins = new MatTableDataSource<UserDTO>();
   instructors = new MatTableDataSource<UserDTO>();
   users = new MatTableDataSource<UserDTO>();
   displayedColumns = ['username', 'name', 'surname'];
-
   receiverUsername: string = '';
-
   mode: string = "admins";
   showMode: string = "Administratorzy";
   selectedRow;
+  interval: any;
 
 
   constructor(private messageService: MessageService, private userService: UserService, private token: TokenStorage) { }
@@ -34,6 +32,9 @@ export class ChatComponent implements OnInit {
   ngOnInit() {
     this.myUsername = this.token.getUsername();
     this.refreshMessages();
+    this.interval = setInterval(() => {
+      this.refreshMessages()
+    }, 1000);
     this.refreshUsersInfo();
   }
 
@@ -42,7 +43,7 @@ export class ChatComponent implements OnInit {
       messages => {
         this.messages = messages;
       }
-    )
+    );
   }
 
   refreshUsersInfo(): void {

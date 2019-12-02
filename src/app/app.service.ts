@@ -4,6 +4,8 @@ import {Observable} from 'rxjs';
 import {User, UserDTO} from './model/user.model';
 import {Course} from './model/course.model'
 import {Message, MessageDTO, SendMessageDTO} from './model/message.model'
+import { interval } from 'rxjs'
+import { mergeMap, map } from 'rxjs/operators';
 
 
 const httpOptions = {
@@ -33,6 +35,7 @@ export class UserService {
     return this.http.get<UserDTO[]>(this.url + 'roles/' + role);
   }
 
+
 }
 
 @Injectable()
@@ -57,6 +60,14 @@ export class MessageService {
 
   public getMessagesWithParticularUser(username: string): Observable<MessageDTO[]> {
     return this.http.get<MessageDTO[]>(this.url + username);
+  }
+
+  public getMessagesWithParticularUserWithTicker(username: string) {
+    return interval(5000).pipe(
+      mergeMap(() => {
+        return this.http.get<MessageDTO[]>(this.url + username)
+      })
+    );
   }
 
   public sendMessage(message: SendMessageDTO): Observable<Message> {
