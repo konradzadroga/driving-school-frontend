@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
-import { User } from '../model/user.model';
+import { User, UserDTO } from '../model/user.model';
 import { UserService } from '../app.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { UserService } from '../app.service';
 export class UserListComponent implements OnInit {
 
   allUsersDisplayedColumns = ['username', 'name', 'surname', 'email'];
-  allUsers = new MatTableDataSource<User>();
+  allUsers = new MatTableDataSource<UserDTO>();
 
   constructor(private userService: UserService) { }
 

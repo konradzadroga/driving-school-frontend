@@ -18,4 +18,15 @@ export interface User {
     name: string;
     surname: string;
     email: string;
+    pesel: number;
+    birthdate: Date;
+    roles: string[];
+    courses: Course[];
+  }
+
+  export interface UserBasicDTO {
+    username: string;
+    name: string;
+    surname: string;
+    email: string;
   }

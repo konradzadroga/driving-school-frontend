@@ -4,3 +4,10 @@ export interface Course {
     description: string;
     places: number;
   }
+
+  export interface CourseDTO {
+    id: number;
+    name: string;
+    description: string;
+    places: number;
+  }

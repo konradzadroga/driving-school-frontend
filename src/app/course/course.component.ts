@@ -3,7 +3,7 @@ import { MatTableDataSource, MatSnackBar } from '@angular/material';
 import { Course } from '../model/course.model';
 import { Router } from '@angular/router';
 import { CourseService, UserService } from '../app.service';
-import { User } from '../model/user.model';
+import { User, UserDTO } from '../model/user.model';
 
 @Component({
   selector: 'app-course',
@@ -17,7 +17,7 @@ export class CourseComponent implements OnInit {
   allCourses = new MatTableDataSource<Course>();
   myCourses = new MatTableDataSource<Course>();
   mode: string = 'all';
-  user: User;
+  user: UserDTO;
 
   constructor(private router: Router, private courseService: CourseService, private userService: UserService, 
     private _snackBar: MatSnackBar) { }

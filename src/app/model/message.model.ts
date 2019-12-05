@@ -1,19 +1,19 @@
-import {User, UserDTO} from './user.model';
+import {User, UserBasicDTO} from './user.model';
 
 export interface Message {
     id: number;
     content: string;
     sentDate: Date;
     sender: User;
-    receiver: UserDTO;
+    receiver: User;
 }
 
 export interface MessageDTO {
     id: number;
     content: string;
     sentDate: Date;
-    sender: UserDTO;
-    receiver: UserDTO;
+    sender: UserBasicDTO;
+    receiver: UserBasicDTO;
 }
 
 export interface SendMessageDTO {

@@ -3,11 +3,11 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import {CustomMaterialModule} from './core/material.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UserComponent } from './user/user.component';
 import {AppRoutingModule} from './core/app.routing.module';
 import { LoginComponent } from './login/login.component';
-import {UserService, CourseService, MessageService} from "./app.service";
+import {UserService, CourseService, MessageService, PictureService} from "./app.service";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthService} from "./core/auth.service";
 import {Interceptor} from "./core/interceptor";
@@ -19,7 +19,8 @@ import { HomeComponent } from './home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; 
 import { ImageSlideshowComponent} from './image-slideshow/image-slideshow.component';
 import { UserListComponent } from './user-list/user-list.component';
-import { ChatComponent } from './chat/chat.component'
+import { ChatComponent } from './chat/chat.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component'
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ChatComponent } from './chat/chat.component'
     HomeComponent,
     ImageSlideshowComponent,
     UserListComponent,
-    ChatComponent
+    ChatComponent,
+    AdminPanelComponent
   ],
   imports: [
     BrowserModule,
@@ -40,11 +42,11 @@ import { ChatComponent } from './chat/chat.component'
     BrowserAnimationsModule,
     CustomMaterialModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     NgbModule
-    
   ],
-  providers: [UserService, AuthService, TokenStorage, CourseService, MessageService,
+  providers: [UserService, AuthService, TokenStorage, CourseService, MessageService, PictureService,
     {provide: HTTP_INTERCEPTORS,
     useClass: Interceptor,
     multi : true}

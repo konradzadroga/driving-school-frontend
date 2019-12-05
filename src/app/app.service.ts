@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {User, UserDTO} from './model/user.model';
+import {UserBasicDTO, UserDTO} from './model/user.model';
 import {Course} from './model/course.model'
-import {Message, MessageDTO, SendMessageDTO} from './model/message.model'
+import {MessageDTO, SendMessageDTO} from './model/message.model'
+import {PictureDTO} from './model/picture.model'
 import { interval } from 'rxjs'
 import { mergeMap, map } from 'rxjs/operators';
 
@@ -19,20 +20,20 @@ export class UserService {
 
   private url = 'http://localhost:8080/users/';
 
-  public getAllUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.url);
+  public getAllUsers(): Observable<UserDTO[]> {
+    return this.http.get<UserDTO[]>(this.url+'dto');
   }
 
-  public getSignedInUser(): Observable<User> {
-    return this.http.get<User>(this.url + 'me');
+  public getSignedInUser(): Observable<UserDTO> {
+    return this.http.get<UserDTO>(this.url + 'me');
   }
 
-  public addCourseToUser(id: number): Observable<User> {
-    return this.http.put<User>(this.url + 'users/courses/add/' + id, null);
+  public addCourseToUser(id: number): Observable<UserDTO> {
+    return this.http.put<UserDTO>(this.url + 'courses/add/' + id, null);
   }
 
-  public getUsersWithParticularRole(role: string): Observable<UserDTO[]> {
-    return this.http.get<UserDTO[]>(this.url + 'roles/' + role);
+  public getUsersWithParticularRole(role: string): Observable<UserBasicDTO[]> {
+    return this.http.get<UserBasicDTO[]>(this.url + 'roles/' + role);
   }
 
 
@@ -43,10 +44,10 @@ export class CourseService {
 
   constructor(private http: HttpClient) {}
 
-  private url = 'http://localhost:8080/';
+  private url = 'http://localhost:8080/courses';
 
   public getCourses(): Observable<Course[]> {
-    return this.http.get<Course[]>(this.url + 'courses');
+    return this.http.get<Course[]>(this.url);
   }
 
 }
@@ -70,9 +71,26 @@ export class MessageService {
     );
   }
 
-  public sendMessage(message: SendMessageDTO): Observable<Message> {
-    return this.http.post<Message>(this.url + 'send', message);
+  public sendMessage(message: SendMessageDTO): Observable<any> {
+    return this.http.post<any>(this.url + 'send', message);
   }
   
+
+}
+
+@Injectable()
+export class PictureService {
+
+  constructor(private http: HttpClient) {}
+
+  private url = 'http://localhost:8080/pictures/'
+
+  public uploadPicture(file: any): Observable<PictureDTO> {
+    return this.http.post<PictureDTO>(this.url + 'upload', file);
+  }
+
+  public getUserPicture(username: String): Observable<PictureDTO> {
+    return this.http.get<PictureDTO>(this.url + username);
+  }
 
 }

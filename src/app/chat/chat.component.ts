@@ -3,7 +3,7 @@ import { Message, MessageDTO, SendMessageDTO } from '../model/message.model';
 import { MessageService, UserService } from '../app.service';
 import { TokenStorage } from '../core/token.storage';
 import { MatTableDataSource } from '@angular/material';
-import { UserDTO } from '../model/user.model';
+import { UserBasicDTO } from '../model/user.model';
 
 @Component({
   selector: 'app-chat',
@@ -16,9 +16,9 @@ export class ChatComponent implements OnInit {
   messages: MessageDTO[];
   newMessage: SendMessageDTO;
   newMessageContent: string;
-  admins = new MatTableDataSource<UserDTO>();
-  instructors = new MatTableDataSource<UserDTO>();
-  users = new MatTableDataSource<UserDTO>();
+  admins = new MatTableDataSource<UserBasicDTO>();
+  instructors = new MatTableDataSource<UserBasicDTO>();
+  users = new MatTableDataSource<UserBasicDTO>();
   displayedColumns = ['username', 'name', 'surname'];
   receiverUsername: string = '';
   mode: string = "admins";
@@ -99,7 +99,12 @@ export class ChatComponent implements OnInit {
 
   selectRow(row) {
     this.selectedRow = row;
-    // more stuff to do...
+  }
+
+  ngOnDestroy() {
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
   }
 
 }
