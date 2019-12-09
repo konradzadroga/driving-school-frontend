@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource, MatSnackBar } from '@angular/material';
-import { Course } from '../model/course.model';
+import { Course, CourseDTO } from '../model/course.model';
 import { Router } from '@angular/router';
 import { CourseService, UserService } from '../app.service';
 import { User, UserDTO } from '../model/user.model';
@@ -12,10 +12,10 @@ import { User, UserDTO } from '../model/user.model';
 })
 export class CourseComponent implements OnInit {
 
-  allCoursesDisplayedColumns = ['name', 'description', 'places', 'signup'];
-  myCoursesDisplayedColumns = ['name', 'description'];
-  allCourses = new MatTableDataSource<Course>();
-  myCourses = new MatTableDataSource<Course>();
+  allCoursesDisplayedColumns = ['category', 'description', 'places', 'startdate', 'instructorUsername', 'cost', 'signup'];
+  myCoursesDisplayedColumns = ['category', 'description', 'startdate', 'instructorUsername'];
+  allCourses = new MatTableDataSource<CourseDTO>();
+  myCourses = new MatTableDataSource<CourseDTO>();
   mode: string = 'all';
   user: UserDTO;
 

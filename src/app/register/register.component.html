@@ -1,6 +1,6 @@
 <mat-card class="my-card">
     <mat-card-header>
-      <mat-card-title>Register</mat-card-title>
+      <mat-card-title style="text-align: center;">Zarejestruj się</mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <form class="my-form">
@@ -8,33 +8,33 @@
           <tr>
             <td>
               <mat-form-field class="full-width">
-                <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
+                <input matInput placeholder="Login" [(ngModel)]="username" name="username" required>
               </mat-form-field>
             </td>
           </tr>
           <tr>
             <td><mat-form-field class="full-width">
-              <input matInput placeholder="Name" [(ngModel)]="name" type="name" name="name" required>
+              <input matInput placeholder="Imię" [(ngModel)]="name" type="name" name="name" required>
             </mat-form-field></td>
           </tr>
           <tr>
             <td>
               <mat-form-field class="full-width">
-                <input matInput placeholder="Surname" [(ngModel)]="surname" name="surname" required>
+                <input matInput placeholder="Nazwisko" [(ngModel)]="surname" name="surname" required>
               </mat-form-field>
             </td>
           </tr>
           <tr>
             <td>
               <mat-form-field class="full-width">
-                <input matInput placeholder="Email" [(ngModel)]="email" name="email" required>
+                <input matInput placeholder="E-mail" [(ngModel)]="email" name="email" required>
               </mat-form-field>
             </td>
           </tr>
           <tr>
             <td>
               <mat-form-field class="full-width">
-                <input matInput placeholder="Pesel" [(ngModel)]="pesel" name="pesel" required>
+                <input matInput placeholder="Numer PESEL" [(ngModel)]="pesel" name="pesel" required>
               </mat-form-field>
             </td>
           </tr>
@@ -50,18 +50,18 @@
           <tr>
             <td>
               <mat-form-field class="full-width">
-                <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" required>
+                <input matInput placeholder="Hasło" [(ngModel)]="password" type="password" name="password" required>
               </mat-form-field>
             </td>
           </tr>
           <tr>
             <td>
-              <h3>{{errorMsg}}</h3>
+              <h4>{{errorMsg}}</h4>
             </td>
           </tr></table>
       </form>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button (click)="register()" color="primary">Register</button>
+      <button mat-raised-button [disabled]="buttonLocked" (click)="register()" color="primary" (click)="lockButton()">Zarejestruj się</button>
     </mat-card-actions>
   </mat-card>

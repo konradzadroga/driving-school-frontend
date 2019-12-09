@@ -20,6 +20,7 @@ export class RegisterComponent  {
   birthdate: Date;
   password: string;
   roles = ['ROLE_USER'];
+  buttonLocked: boolean = false;
 
   register(): void {
     this.authService.attemptRegistration(this.username, this.name, this.surname, this.email, this.pesel,
@@ -29,8 +30,13 @@ export class RegisterComponent  {
       },
       error => {
         this.errorMsg = error;
+        this.buttonLocked = false;
       }
     );
+  }
+
+  lockButton(): void {
+    this.buttonLocked = true;
   }
 
 }

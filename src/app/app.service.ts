@@ -2,9 +2,10 @@ import {Injectable} from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {UserBasicDTO, UserDTO} from './model/user.model';
-import {Course} from './model/course.model'
+import {Course, CourseDTO} from './model/course.model'
 import {MessageDTO, SendMessageDTO} from './model/message.model'
 import {PictureDTO} from './model/picture.model'
+import {ContactDTO} from './model/contact.model';
 import { interval } from 'rxjs'
 import { mergeMap, map } from 'rxjs/operators';
 
@@ -21,7 +22,7 @@ export class UserService {
   private url = 'http://localhost:8080/users/';
 
   public getAllUsers(): Observable<UserDTO[]> {
-    return this.http.get<UserDTO[]>(this.url+'dto');
+    return this.http.get<UserDTO[]>(this.url);
   }
 
   public getSignedInUser(): Observable<UserDTO> {
@@ -46,8 +47,8 @@ export class CourseService {
 
   private url = 'http://localhost:8080/courses';
 
-  public getCourses(): Observable<Course[]> {
-    return this.http.get<Course[]>(this.url);
+  public getCourses(): Observable<CourseDTO[]> {
+    return this.http.get<CourseDTO[]>(this.url);
   }
 
 }
@@ -91,6 +92,19 @@ export class PictureService {
 
   public getUserPicture(username: String): Observable<PictureDTO> {
     return this.http.get<PictureDTO>(this.url + username);
+  }
+
+}
+
+@Injectable()
+export class ContactService {
+
+  constructor(private http: HttpClient) {}
+
+  private url = 'http://localhost:8080/contact/'
+
+  public sendContactRequest(contact: ContactDTO): Observable<ContactDTO> {
+    return this.http.post<ContactDTO>(this.url, contact);
   }
 
 }

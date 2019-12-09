@@ -3,17 +3,57 @@
     <mat-toolbar-row>
       <span class="my-spacer"></span>
       <ng-container *ngIf="!isLoggedIn">
-        <button mat-button [routerLink]="['/login']">Zaloguj się</button>
-        <button mat-button [routerLink]="['/register']">Zarejestruj się</button>
+        <button mat-button class="my-toolbar-button" [routerLink]="['/login']">
+          <mat-icon>vpn_key</mat-icon>
+          <span class="underline-span">Zaloguj się</span>
+        </button>
+        <button mat-button class="my-toolbar-button" [routerLink]="['/register']">
+          <mat-icon>create</mat-icon>
+          <span class="underline-span">Zarejestruj się</span>
+        </button>
+        <button mat-button class="my-toolbar-button" (click)="changeTheme()">
+          <mat-icon>format_paint</mat-icon>
+          <span class="underline-span">Motyw</span>
+        </button>
       </ng-container>
       <ng-container *ngIf="isLoggedIn">
-        <button mat-button [routerLink]="['/course']">Kursy</button>
-        <button mat-button [routerLink]="['/profile']">{{this.username}}</button>
-        <button mat-button (click)="signOut()">Wyloguj się</button>
+        <ng-container *ngIf="isAdmin">
+          <button mat-button class="my-toolbar-button" [routerLink]="['/admin']">
+            <mat-icon>verified_user</mat-icon>
+            <span class="underline-span">Panel administratora</span>
+          </button>
+        </ng-container>
+        <button mat-button class="my-toolbar-button" [routerLink]="['/course']">
+          <mat-icon>school</mat-icon>
+          <span class="underline-span">Kursy</span>
+        </button>
+        <button mat-button class="my-toolbar-button" [routerLink]="['/chat']">
+          <mat-icon>message</mat-icon>
+          <span class="underline-span">Wiadomości</span>
+        </button>
+        <button mat-button class="my-toolbar-button" [routerLink]="['/contact']">
+          <mat-icon>contact_mail</mat-icon>
+          <span class="underline-span">Kontakt</span>
+        </button>
+        <button mat-button class="my-toolbar-button" (click)="changeTheme()">
+          <mat-icon>format_paint</mat-icon>
+          <span class="underline-span">Motyw</span>
+        </button>
+        <button mat-button class="my-toolbar-button" [matMenuTriggerFor]="menu">
+          <mat-icon>face</mat-icon>
+          <span class="underline-span">{{this.username}}</span>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item [routerLink]="['/profile']">
+            <mat-icon>supervised_user_circle</mat-icon>
+            <span>Mój profil</span>
+          </button>
+          <button mat-menu-item (click)="signOut()">
+            <mat-icon>exit_to_app</mat-icon>
+            <span>Wyloguj się</span>
+          </button>
+        </mat-menu>
       </ng-container>
-      <button mat-icon-button (click)="changeTheme()">
-        <mat-icon>format_paint</mat-icon>
-      </button>
     </mat-toolbar-row>
   </mat-toolbar>
   <router-outlet></router-outlet>

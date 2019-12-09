@@ -4,24 +4,26 @@
             <div class="pick-user-container">
                 <mat-toolbar color="accent">
                     <mat-toolbar-row>
-                        <span>{{showMode}}</span>
-                        <button mat-icon-button [matMenuTriggerFor]="menu">
-                            <mat-icon>more_vert</mat-icon>
-                        </button>
-                        <mat-menu #menu="matMenu">
-                            <button mat-menu-item (click)="setMode('admins')">
-                                <mat-icon>dialpad</mat-icon>
-                                <span>Administratorzy</span>
+                        <div class="my-menu">
+                            <span>{{showMode}}</span>
+                            <button mat-icon-button [matMenuTriggerFor]="menu">
+                                <mat-icon>more_vert</mat-icon>
                             </button>
-                            <button mat-menu-item (click)="setMode('instructors')">
-                                <mat-icon>voicemail</mat-icon>
-                                <span>Instruktorzy</span>
-                            </button>
-                            <button mat-menu-item (click)="setMode('users')">
-                                <mat-icon>notifications_off</mat-icon>
-                                <span>Użytkownicy</span>
-                            </button>
-                        </mat-menu>
+                            <mat-menu #menu="matMenu">
+                                <button mat-menu-item (click)="setMode('admins')">
+                                    <mat-icon>verified_user</mat-icon>
+                                    <span>Administratorzy</span>
+                                </button>
+                                <button mat-menu-item (click)="setMode('instructors')">
+                                    <mat-icon>book</mat-icon>
+                                    <span>Instruktorzy</span>
+                                </button>
+                                <button mat-menu-item (click)="setMode('users')">
+                                    <mat-icon>supervised_user_circle</mat-icon>
+                                    <span>Użytkownicy</span>
+                                </button>
+                            </mat-menu>
+                        </div>
                     </mat-toolbar-row>
                 </mat-toolbar>
                 <ng-container *ngIf="mode==='admins'">
@@ -121,7 +123,7 @@
                             [(ngModel)]="newMessageContent">
                         <mat-hint>{{inputmessage.value.length}} / 256</mat-hint>
                     </mat-form-field>
-                    <button mat-icon-button id="send-button" color="primary" (click)="sendMessage()">
+                    <button mat-icon-button id="send-button" color="primary" (click)="sendMessage()" (click)="newMessageContent=''">
                         <mat-icon>send</mat-icon>
                     </button>
                 </mat-card>

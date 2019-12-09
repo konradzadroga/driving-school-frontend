@@ -10,7 +10,7 @@ import { UserService } from '../app.service';
 })
 export class UserListComponent implements OnInit {
 
-  allUsersDisplayedColumns = ['username', 'name', 'surname', 'email'];
+  allUsersDisplayedColumns = ['username', 'name', 'surname', 'email', 'roles', 'action'];
   allUsers = new MatTableDataSource<UserDTO>();
 
   constructor(private userService: UserService) { }
@@ -21,8 +21,8 @@ export class UserListComponent implements OnInit {
 
   refreshUsersInfo(): void {
     this.userService.getAllUsers().subscribe(
-      data => {
-        this.allUsers.data = data;
+      users => {
+        this.allUsers.data = users;
       }
     )
   }

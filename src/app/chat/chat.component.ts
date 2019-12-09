@@ -50,10 +50,10 @@ export class ChatComponent implements OnInit {
     this.userService.getUsersWithParticularRole('ROLE_ADMIN').subscribe(
       admins => this.admins.data = admins
     );
-    this.userService.getUsersWithParticularRole('ROLE_INSTRUCTORS').subscribe(
+    this.userService.getUsersWithParticularRole('ROLE_INSTRUCTOR').subscribe(
       instructors => this.instructors.data = instructors
     );
-    this.userService.getUsersWithParticularRole('ROLE_ADMIN').subscribe(
+    this.userService.getUsersWithParticularRole('ROLE_USER').subscribe(
       users => this.users.data = users
     );
   }
@@ -91,7 +91,6 @@ export class ChatComponent implements OnInit {
     }
     this.messageService.sendMessage(this.newMessage).subscribe(
       data => {
-        this.newMessageContent = '';
         this.refreshMessages();
       }
     )

@@ -1,5 +1,5 @@
 import {Role} from './role.model';
-import { Course } from './course.model';
+import { Course, CourseDTO } from './course.model';
 
 export interface User {
     id: number;
@@ -21,7 +21,7 @@ export interface User {
     pesel: number;
     birthdate: Date;
     roles: string[];
-    courses: Course[];
+    courses: CourseDTO[];
   }
 
   export interface UserBasicDTO {

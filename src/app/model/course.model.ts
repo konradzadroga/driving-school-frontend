@@ -7,7 +7,10 @@ export interface Course {
 
   export interface CourseDTO {
     id: number;
-    name: string;
+    category: string;
     description: string;
     places: number;
+    startdate: Date;
+    cost: number;
+    instructorUsername: string;
   }

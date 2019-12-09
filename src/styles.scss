@@ -6,8 +6,8 @@
 @include mat-core();
 
 
-$default-primary: mat-palette($mat-teal, 500, 200, 800);
-$default-accent: mat-palette($mat-brown, 600);
+$default-primary: mat-palette($mat-teal, 500);
+$default-accent: mat-palette($mat-teal, 700);
 $default-warn: mat-palette($mat-amber, 700);
 $default-theme: mat-light-theme($default-primary, $default-accent, $default-warn);
 
@@ -35,10 +35,12 @@ $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 .my-spacer {
   flex: 1 1 auto;
 }
+
 .my-card {
   width: 400px;
-  margin: 10% auto;
+  margin: 5% auto;
 }
+
 .mat-card-title {
   font-size: 16px;
 }
