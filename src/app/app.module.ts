@@ -21,7 +21,10 @@ import { ImageSlideshowComponent} from './image-slideshow/image-slideshow.compon
 import { UserListComponent } from './user-list/user-list.component';
 import { ChatComponent } from './chat/chat.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
-import { ContactComponent } from './contact/contact.component'
+import { ContactComponent } from './contact/contact.component';
+import { CourseActivityListComponent } from './course-activity-list/course-activity-list.component';
+import { CourseAllListComponent } from './course-all-list/course-all-list.component';
+import { CourseMineListComponent } from './course-mine-list/course-mine-list.component'
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import { ContactComponent } from './contact/contact.component'
     UserListComponent,
     ChatComponent,
     AdminPanelComponent,
-    ContactComponent
+    ContactComponent,
+    CourseActivityListComponent,
+    CourseAllListComponent,
+    CourseMineListComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,45 @@
+<div class="example-container mat-elevation-z8">
+    <mat-table #table [dataSource]="allCourses">
+
+        <ng-container matColumnDef="category">
+            <mat-header-cell *matHeaderCellDef>Kategoria</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.category}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef>Opis</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="places">
+            <mat-header-cell *matHeaderCellDef>Wolne miejsca</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.places}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="startdate">
+            <mat-header-cell *matHeaderCellDef>Data rozpoczęcia</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.startdate.substring(0,10)}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="instructorUsername">
+            <mat-header-cell *matHeaderCellDef>Login instruktora</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.instructorUsername}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="cost">
+            <mat-header-cell *matHeaderCellDef>Koszt</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.cost}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="signup">
+            <mat-header-cell *matHeaderCellDef>Zapisz się</mat-header-cell>
+            <mat-cell *matCellDef="let element"><button mat-raised-button color="accent"
+                    (click)="signUpForCourse(element.id)" (click)="openSnackBar('Zapisałeś się na kurs', 'OK')"
+                    [disabled]="checkIfAlreadyRegistered(element.id)">Zapisz</button></mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="allCoursesDisplayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: allCoursesDisplayedColumns;"></mat-row>
+
+    </mat-table>
+</div>

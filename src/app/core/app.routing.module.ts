@@ -10,11 +10,18 @@ import { UserListComponent } from '../user-list/user-list.component';
 import { ChatComponent } from '../chat/chat.component';
 import { ContactComponent } from '../contact/contact.component';
 import { AdminPanelComponent } from '../admin-panel/admin-panel.component';
+import { CourseActivityListComponent } from '../course-activity-list/course-activity-list.component';
+import { CourseAllListComponent } from '../course-all-list/course-all-list.component';
+import { CourseMineListComponent } from '../course-mine-list/course-mine-list.component';
 
 const routes: Routes = [
   { path: 'user', component: UserComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'course', component: CourseComponent },
+  { path: 'course', component: CourseComponent, children: [
+    {path: 'course-all-list', component: CourseAllListComponent},
+    {path: 'course-mine-list', component: CourseMineListComponent},
+    {path: 'course-activities', component: CourseActivityListComponent}
+  ] },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: UserProfileComponent },
   { path: 'home', component: HomeComponent },
@@ -24,7 +31,7 @@ const routes: Routes = [
     path: 'admin', component: AdminPanelComponent, children:
       [{path: 'user-list', component: UserListComponent}]
   },
-  { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent }
 ];
 
 @NgModule({

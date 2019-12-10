@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {Observable, BehaviorSubject} from 'rxjs';
 import {UserBasicDTO, UserDTO} from './model/user.model';
 import {Course, CourseDTO} from './model/course.model'
 import {MessageDTO, SendMessageDTO} from './model/message.model'
@@ -43,9 +43,17 @@ export class UserService {
 @Injectable()
 export class CourseService {
 
-  constructor(private http: HttpClient) {}
+  private courseIdSource = new BehaviorSubject<number>(-1);
+  
+  currentCourseId = this.courseIdSource.asObservable();
 
   private url = 'http://localhost:8080/courses';
+
+  constructor(private http: HttpClient) {}
+
+  public changeCourseId(id: number) {
+    this.courseIdSource.next(id);
+  }
 
   public getCourses(): Observable<CourseDTO[]> {
     return this.http.get<CourseDTO[]>(this.url);
