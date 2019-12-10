@@ -2,12 +2,13 @@ import {Injectable} from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable, BehaviorSubject} from 'rxjs';
 import {UserBasicDTO, UserDTO} from './model/user.model';
-import {Course, CourseDTO} from './model/course.model'
+import {ActivityDTO} from './model/activity.model'
+import {CourseDTO} from './model/course.model'
 import {MessageDTO, SendMessageDTO} from './model/message.model'
 import {PictureDTO} from './model/picture.model'
 import {ContactDTO} from './model/contact.model';
 import { interval } from 'rxjs'
-import { mergeMap, map } from 'rxjs/operators';
+import { mergeMap} from 'rxjs/operators';
 
 
 const httpOptions = {
@@ -114,5 +115,23 @@ export class ContactService {
   public sendContactRequest(contact: ContactDTO): Observable<ContactDTO> {
     return this.http.post<ContactDTO>(this.url, contact);
   }
+
+}
+
+@Injectable()
+export class ActivityService {
+
+  constructor(private http: HttpClient) {}
+
+  private url = 'http://localhost:8080/activities/'
+
+  public getActivitiesByCourse(id: number): Observable<ActivityDTO[]> {
+    return this.http.get<ActivityDTO[]>(this.url +'courses/' + id);
+  }
+
+  public getActivitiesDatesByCourse(id: number): Observable<Date[]> {
+    return this.http.get<Date[]>(this.url +'courses/' + id + "/dates");
+  }
+
 
 }

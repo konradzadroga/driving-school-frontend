@@ -1,1 +1,36 @@
-{{courseId}}
+<mat-form-field>
+    <input matInput [matDatepicker]="picker" (dateChange)="applyFilter($event.target.value)"
+    (keyup)="applyFilter($event.target.value)" placeholder="Data">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+<div class="example-container mat-elevation-z8">
+    <mat-table #table [dataSource]="activities">
+
+        <ng-container matColumnDef="dateOfActivity">
+            <mat-header-cell *matHeaderCellDef>Data</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.dateOfActivity.substring(0,10)}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="timeOfActivity">
+            <mat-header-cell *matHeaderCellDef>Godzina</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.dateOfActivity.substring(11,16)}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="instructor">
+            <mat-header-cell *matHeaderCellDef>Instruktor</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.instructor.name}} {{element.instructor.surname}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+            <mat-header-cell *matHeaderCellDef>Akcja</mat-header-cell>
+            <mat-cell *matCellDef="let element"><button mat-raised-button color="accent">JENSON BUTTON XD</button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+    </mat-table>
+</div>

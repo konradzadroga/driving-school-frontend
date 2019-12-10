@@ -1,0 +1,20 @@
+import {User, UserDTO} from './user.model';
+import {Course, CourseDTO} from './course.model';
+
+export interface Activity {
+    id: number;
+    date_of_activity: Date;
+    rate: number;
+    course: Course;
+    instructor: User;
+    student: User;
+}
+
+export interface ActivityDTO {
+    id: number;
+    date_of_activity: Date;
+    rate: number;
+    course: CourseDTO;
+    instructor: UserDTO;
+    student: UserDTO;
+}

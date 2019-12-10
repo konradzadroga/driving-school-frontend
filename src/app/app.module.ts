@@ -7,7 +7,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UserComponent } from './user/user.component';
 import {AppRoutingModule} from './core/app.routing.module';
 import { LoginComponent } from './login/login.component';
-import {UserService, CourseService, MessageService, PictureService, ContactService} from "./app.service";
+import {UserService, CourseService, MessageService, PictureService, ContactService, ActivityService} from "./app.service";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthService} from "./core/auth.service";
 import {Interceptor} from "./core/interceptor";
@@ -54,7 +54,7 @@ import { CourseMineListComponent } from './course-mine-list/course-mine-list.com
     AppRoutingModule,
     NgbModule
   ],
-  providers: [UserService, AuthService, TokenStorage, CourseService, MessageService, PictureService, ContactService, 
+  providers: [UserService, AuthService, TokenStorage, CourseService, MessageService, PictureService, ContactService, ActivityService,
     {provide: HTTP_INTERCEPTORS,
     useClass: Interceptor,
     multi : true}
