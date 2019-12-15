@@ -1,0 +1,54 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <button mat-button [routerLink]="['../course-activities']">Wszystkie zajęcia</button>
+        <button mat-button [routerLink]="['../course-activities-mine']">Moje zajęcia</button>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<ng-container *ngIf="activities.data.length==0">
+    <div class="center-container">
+        <h4>Nie jesteś zapisany/a na żadne zajęcia.</h4>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="activities.data.length>0">
+    <div class="example-container mat-elevation-z8">
+        <mat-table #table [dataSource]="activities">
+
+            <ng-container matColumnDef="dateOfActivity">
+                <mat-header-cell *matHeaderCellDef>Data</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.dateOfActivity.substring(0,10)}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="timeOfActivity">
+                <mat-header-cell *matHeaderCellDef>Godzina</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.dateOfActivity.substring(11,16)}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="instructor">
+                <mat-header-cell *matHeaderCellDef>Instruktor</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.instructor.name}} {{element.instructor.surname}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="rate">
+                <mat-header-cell *matHeaderCellDef>Ocena</mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    <form #form="ngForm">
+                        <bar-rating name="rating" [(rate)]="element.rate" disabled="true" [max]="5" [theme]="'stars'"></bar-rating>
+                    </form>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="comment">
+                <mat-header-cell *matHeaderCellDef>Komentarz</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.comment}}</mat-cell>
+            </ng-container>
+
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+        </mat-table>
+    </div>
+</ng-container>

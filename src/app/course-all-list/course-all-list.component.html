@@ -21,9 +21,9 @@
             <mat-cell *matCellDef="let element"> {{element.startdate.substring(0,10)}} </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="instructorUsername">
+        <ng-container matColumnDef="instructorNameAndSurname">
             <mat-header-cell *matHeaderCellDef>Login instruktora</mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.instructorUsername}} </mat-cell>
+            <mat-cell *matCellDef="let element"> {{element.instructorNameAndSurname}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="cost">
@@ -34,8 +34,9 @@
         <ng-container matColumnDef="signup">
             <mat-header-cell *matHeaderCellDef>Zapisz się</mat-header-cell>
             <mat-cell *matCellDef="let element"><button mat-raised-button color="accent"
-                    (click)="signUpForCourse(element.id)" (click)="openSnackBar('Zapisałeś się na kurs', 'OK')"
-                    [disabled]="checkIfAlreadyRegistered(element.id)">Zapisz</button></mat-cell>
+                    [routerLink]="['/payment']" (click)="selectCourseId(element.id)"
+                    [disabled]="checkIfAlreadyRegistered(element.id)">Zapisz się</button>
+            </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="allCoursesDisplayedColumns"></mat-header-row>

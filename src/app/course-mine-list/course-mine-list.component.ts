@@ -11,7 +11,7 @@ import { UserDTO } from '../model/user.model';
 })
 export class CourseMineListComponent implements OnInit {
 
-  myCoursesDisplayedColumns = ['category', 'description', 'startdate', 'instructorUsername', 'action'];
+  myCoursesDisplayedColumns = ['category', 'description', 'startdate', 'instructorNameAndSurname', 'action'];
   myCourses = new MatTableDataSource<CourseDTO>();
   courseId: number;
   user: UserDTO;

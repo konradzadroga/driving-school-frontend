@@ -23,6 +23,50 @@ export class UserListComponent implements OnInit {
     this.userService.getAllUsers().subscribe(
       users => {
         this.allUsers.data = users;
+        this.mapRoles();
+      }
+    )
+  }
+
+  mapRoles() : void {
+    this.allUsers.data.forEach(user => {
+
+      let userRoles: string[] = [];
+
+      user.roles.forEach(role => {
+        if (role === "ROLE_ADMIN") {
+          userRoles.push("Administrator");
+        }
+        if (role === "ROLE_INSTRUCTOR") {
+          userRoles.push("Instruktor");
+        }
+        if (role === "ROLE_USER") {
+          userRoles.push("Użytkownik");
+        }
+      });
+      user.roles = userRoles;
+    });
+  }
+
+  deleteUser(username: string): void {
+    this.userService.deleteUser(username).subscribe(
+      data => {
+        this.refreshUsersInfo();
+      })
+  }
+
+  makeUserAdmin(username: string): void {
+    this.userService.assignRoleToUser("ROLE_ADMIN", username).subscribe(
+      data => {
+        this.refreshUsersInfo();
+      }
+    )
+  }
+
+  makeUserInstructor(username: string): void {
+    this.userService.assignRoleToUser("ROLE_INSTRUCTOR", username).subscribe(
+      data => {
+        this.refreshUsersInfo();
       }
     )
   }

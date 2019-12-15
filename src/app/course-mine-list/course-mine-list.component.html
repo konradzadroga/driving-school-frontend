@@ -1,3 +1,10 @@
+<ng-container *ngIf="myCourses.data.length==0">
+    <div class="center-container">
+        <h4>Nie zapisałeś/aś się jeszcze na żaden kurs.</h4>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="myCourses.data.length>0">
 <div class="example-container mat-elevation-z8">
     <mat-table #table [dataSource]="myCourses">
 
@@ -17,13 +24,13 @@
             <mat-cell *matCellDef="let element"> {{element.startdate.substring(0,10)}} </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="instructorUsername">
+        <ng-container matColumnDef="instructorNameAndSurname">
             <mat-header-cell *matHeaderCellDef>Login instruktora</mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.instructorUsername}} </mat-cell>
+            <mat-cell *matCellDef="let element"> {{element.instructorNameAndSurname}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="action">
-            <mat-header-cell *matHeaderCellDef>Akcje</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
             <mat-cell *matCellDef="let element">
                 <button mat-raised-button color="primary" (click)="selectCourseId(element.id)"
                     [routerLink]="['../course-activities']">Zajęcia</button>
@@ -35,3 +42,4 @@
 
     </mat-table>
 </div>
+</ng-container>

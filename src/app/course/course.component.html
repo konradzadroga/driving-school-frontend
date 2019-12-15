@@ -2,6 +2,9 @@
   <mat-toolbar-row>
     <button mat-button [routerLink]="['./course-all-list']">Wszystkie kursy</button>
     <button mat-button [routerLink]="['./course-mine-list']">Moje kursy</button>
+    <ng-container *ngIf="isInstructor">
+      <button mat-button [routerLink]="['./course-instructed']">Zarządzane przeze mnie kursy</button>
+    </ng-container>
   </mat-toolbar-row>
 </mat-toolbar>
 

@@ -4,6 +4,8 @@ import { CourseDTO } from '../model/course.model';
 import { UserDTO } from '../model/user.model';
 import { CourseService, UserService } from '../app.service';
 
+declare let paypal: any;
+
 @Component({
   selector: 'app-course-all-list',
   templateUrl: './course-all-list.component.html',
@@ -11,9 +13,10 @@ import { CourseService, UserService } from '../app.service';
 })
 export class CourseAllListComponent implements OnInit {
 
-  allCoursesDisplayedColumns = ['category', 'description', 'places', 'startdate', 'instructorUsername', 'cost', 'signup'];
+  allCoursesDisplayedColumns = ['category', 'description', 'places', 'startdate', 'instructorNameAndSurname', 'cost', 'signup'];
   allCourses = new MatTableDataSource<CourseDTO>();
   myCourses = new MatTableDataSource<CourseDTO>();
+  courseId: number;
   user: UserDTO;
 
   constructor(private courseService: CourseService, private userService: UserService, private _snackBar: MatSnackBar) { }
@@ -22,13 +25,15 @@ export class CourseAllListComponent implements OnInit {
     this.refreshCourseInfo();
   }
 
+
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
-      duration: 2000,
+      duration: 3000,
     });
   }
 
   refreshCourseInfo(): void {
+    this.courseService.currentCourseId.subscribe(courseId => this.courseId = courseId);
     this.courseService.getCourses().subscribe(
       data => {
         this.allCourses.data = data;
@@ -54,12 +59,9 @@ export class CourseAllListComponent implements OnInit {
     return isUserAlreadyRegistered;
   }
 
-  signUpForCourse(id: number): void {
-    this.userService.addCourseToUser(id).subscribe(
-      () => {
-        this.refreshCourseInfo();
-      }
-    );
+  
+  selectCourseId(id: number) {
+    this.courseService.changeCourseId(id);
   }
 
 

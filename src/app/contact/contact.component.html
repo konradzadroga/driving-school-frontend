@@ -8,7 +8,7 @@
         <label for="myTextArea">Tu wpisz swoją wiadomość</label>
         <textarea [(ngModel)]=contact.content maxlength=256 class="form-control" #myTextArea rows="5"></textarea>
         <mat-hint>{{myTextArea.value.length}} / 256</mat-hint>
-        <button mat-raised-button color="primary" class="send-button" (click)="sendContactRequest()" (click)="lockButton()"
+        <button mat-raised-button color="accent" class="send-button" (click)="sendContactRequest()" (click)="lockButton()"
         [disabled]="buttonLocked">Wyślij</button>
     </div>
 </mat-card>

@@ -21,6 +21,7 @@ export class RegisterComponent  {
   password: string;
   roles = ['ROLE_USER'];
   buttonLocked: boolean = false;
+  maxDate: Date = new Date(2001, 0, 1);
 
   register(): void {
     this.authService.attemptRegistration(this.username, this.name, this.surname, this.email, this.pesel,

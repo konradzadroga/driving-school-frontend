@@ -38,6 +38,14 @@ export class UserService {
     return this.http.get<UserBasicDTO[]>(this.url + 'roles/' + role);
   }
 
+  public deleteUser(username: string): Observable<UserDTO> {
+    return this.http.delete<UserDTO>(this.url + username + '/delete')
+  }
+
+  public assignRoleToUser(role: string, username: string): Observable<UserDTO> {
+    return this.http.post<UserDTO>(this.url + 'roles/assign/' + role + '/' + username, null);
+  }
+
 
 }
 
@@ -58,6 +66,14 @@ export class CourseService {
 
   public getCourses(): Observable<CourseDTO[]> {
     return this.http.get<CourseDTO[]>(this.url);
+  }
+
+  public getCourseById(id: number): Observable<CourseDTO> {
+    return this.http.get<CourseDTO>(this.url + '/' + id);
+  }
+
+  public getInstructorCourses(username: string): Observable<CourseDTO[]> {
+    return this.http.get<CourseDTO[]>(this.url + '/instructor/' + username);
   }
 
 }
@@ -121,6 +137,15 @@ export class ContactService {
 @Injectable()
 export class ActivityService {
 
+  private activityIdSource = new BehaviorSubject<number>(-1);
+  
+  currentActivityId = this.activityIdSource.asObservable();
+
+  public changeActivityId(id: number) {
+    this.activityIdSource.next(id);
+  }
+
+
   constructor(private http: HttpClient) {}
 
   private url = 'http://localhost:8080/activities/'
@@ -129,8 +154,28 @@ export class ActivityService {
     return this.http.get<ActivityDTO[]>(this.url +'courses/' + id);
   }
 
+  public getActivitiesByCourseWhereUserIsSignedUp(id: number): Observable<ActivityDTO[]> {
+    return this.http.get<ActivityDTO[]>(this.url + 'courses/' + id + '/student');
+  }
+
   public getActivitiesDatesByCourse(id: number): Observable<Date[]> {
     return this.http.get<Date[]>(this.url +'courses/' + id + "/dates");
+  }
+
+  public getUserActivitesByCourse(id: number): Observable<ActivityDTO[]> {
+    return this.http.get<ActivityDTO[]>(this.url + 'courses/' + id + "/mine");
+  }
+
+  public signUpForActivity(id: number): Observable<ActivityDTO> {
+    return this.http.post<ActivityDTO>(this.url + 'courses/' + id + '/signup', null);
+  }
+
+  public addComment(id: number, comment: string): Observable<ActivityDTO> {
+    return this.http.post<ActivityDTO>(this.url + id + '/comment', comment);
+  }
+
+  public addRate(id: number, rate: number): Observable<ActivityDTO> {
+    return this.http.post<ActivityDTO>(this.url + id + '/rate/' + rate, null);
   }
 
 

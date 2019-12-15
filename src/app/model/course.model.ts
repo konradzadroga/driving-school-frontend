@@ -13,4 +13,5 @@ export interface Course {
     startdate: Date;
     cost: number;
     instructorUsername: string;
+    instructorNameAndSurname: string;
   }

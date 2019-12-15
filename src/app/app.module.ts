@@ -24,7 +24,14 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { ContactComponent } from './contact/contact.component';
 import { CourseActivityListComponent } from './course-activity-list/course-activity-list.component';
 import { CourseAllListComponent } from './course-all-list/course-all-list.component';
-import { CourseMineListComponent } from './course-mine-list/course-mine-list.component'
+import { CourseMineListComponent } from './course-mine-list/course-mine-list.component';
+import { PaymentComponent } from './payment/payment.component';
+import { CourseInstructedComponent } from './course-instructed/course-instructed.component';
+import { CourseInstructedActivityListComponent } from './course-instructed-activity-list/course-instructed-activity-list.component';
+import { PaymentSuccesfullComponent } from './payment-succesfull/payment-succesfull.component';
+import { CourseActivityAddCommentComponent } from './course-activity-add-comment/course-activity-add-comment.component'
+import { BarRatingModule } from "ngx-bar-rating";
+import { CourseActivityMyListComponent } from './course-activity-my-list/course-activity-my-list.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +49,13 @@ import { CourseMineListComponent } from './course-mine-list/course-mine-list.com
     ContactComponent,
     CourseActivityListComponent,
     CourseAllListComponent,
-    CourseMineListComponent
+    CourseMineListComponent,
+    PaymentComponent,
+    CourseInstructedComponent,
+    CourseInstructedActivityListComponent,
+    PaymentSuccesfullComponent,
+    CourseActivityAddCommentComponent,
+    CourseActivityMyListComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +65,8 @@ import { CourseMineListComponent } from './course-mine-list/course-mine-list.com
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    BarRatingModule
   ],
   providers: [UserService, AuthService, TokenStorage, CourseService, MessageService, PictureService, ContactService, ActivityService,
     {provide: HTTP_INTERCEPTORS,

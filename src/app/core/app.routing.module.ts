@@ -13,6 +13,12 @@ import { AdminPanelComponent } from '../admin-panel/admin-panel.component';
 import { CourseActivityListComponent } from '../course-activity-list/course-activity-list.component';
 import { CourseAllListComponent } from '../course-all-list/course-all-list.component';
 import { CourseMineListComponent } from '../course-mine-list/course-mine-list.component';
+import { PaymentComponent } from '../payment/payment.component';
+import { CourseInstructedComponent } from '../course-instructed/course-instructed.component';
+import { CourseInstructedActivityListComponent } from '../course-instructed-activity-list/course-instructed-activity-list.component';
+import { PaymentSuccesfullComponent } from '../payment-succesfull/payment-succesfull.component';
+import { CourseActivityAddCommentComponent } from '../course-activity-add-comment/course-activity-add-comment.component';
+import { CourseActivityMyListComponent } from '../course-activity-my-list/course-activity-my-list.component';
 
 const routes: Routes = [
   { path: 'user', component: UserComponent },
@@ -20,7 +26,12 @@ const routes: Routes = [
   { path: 'course', component: CourseComponent, children: [
     {path: 'course-all-list', component: CourseAllListComponent},
     {path: 'course-mine-list', component: CourseMineListComponent},
-    {path: 'course-activities', component: CourseActivityListComponent}
+    {path: 'course-instructed', component: CourseInstructedComponent},
+    {path: 'course-activities', component: CourseActivityListComponent},
+    {path: 'course-activities-mine', component: CourseActivityMyListComponent},
+    {path: 'course-instructed-activities', component: CourseInstructedActivityListComponent, children: [
+      {path: 'activity-add-comment', component: CourseActivityAddCommentComponent}
+    ]}
   ] },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: UserProfileComponent },
@@ -31,7 +42,9 @@ const routes: Routes = [
     path: 'admin', component: AdminPanelComponent, children:
       [{path: 'user-list', component: UserListComponent}]
   },
-  { path: '', component: HomeComponent }
+  { path: '', component: HomeComponent },
+  { path: 'payment', component: PaymentComponent},
+  { path: 'payment-completed', component: PaymentSuccesfullComponent}
 ];
 
 @NgModule({

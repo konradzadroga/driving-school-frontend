@@ -1,67 +1,82 @@
 <mat-card class="my-card">
-    <mat-card-header>
-      <mat-card-title style="text-align: center;">Zarejestruj się</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <form class="my-form">
-        <table class="full-width" cellspacing="0">
-          <tr>
-            <td>
-              <mat-form-field class="full-width">
-                <input matInput placeholder="Login" [(ngModel)]="username" name="username" required>
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td><mat-form-field class="full-width">
+  <mat-card-header>
+    <mat-card-title style="text-align: center;">Zarejestruj się</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form class="my-form">
+      <table class="full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Login" [(ngModel)]="username" name="username" required>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="full-width">
               <input matInput placeholder="Imię" [(ngModel)]="name" type="name" name="name" required>
-            </mat-form-field></td>
-          </tr>
-          <tr>
-            <td>
-              <mat-form-field class="full-width">
-                <input matInput placeholder="Nazwisko" [(ngModel)]="surname" name="surname" required>
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <mat-form-field class="full-width">
-                <input matInput placeholder="E-mail" [(ngModel)]="email" name="email" required>
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <mat-form-field class="full-width">
-                <input matInput placeholder="Numer PESEL" [(ngModel)]="pesel" name="pesel" required>
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <mat-form-field class="full-width">
-                <input matInput [matDatepicker]="picker" placeholder="Data urodzenia" [(ngModel)]="birthdate" name="birthdate">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <mat-form-field class="full-width">
-                <input matInput placeholder="Hasło" [(ngModel)]="password" type="password" name="password" required>
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <h4>{{errorMsg}}</h4>
-            </td>
-          </tr></table>
-      </form>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-raised-button [disabled]="buttonLocked" (click)="register()" color="primary" (click)="lockButton()">Zarejestruj się</button>
-    </mat-card-actions>
-  </mat-card>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Nazwisko" [(ngModel)]="surname" name="surname" required>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="full-width">
+              <input matInput placeholder="E-mail" [(ngModel)]="email" name="email" required>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Numer PESEL" [(ngModel)]="pesel" name="pesel" required>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="full-width">
+              <input matInput [matDatepicker]="picker" [max]="maxDate" placeholder="Data urodzenia" [(ngModel)]="birthdate"
+                name="birthdate">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Hasło" [(ngModel)]="password" type="password" name="password" required>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span style="color: red">{{errorMsg}}</span>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <div class="center-container-no-top-margin">
+      <button mat-raised-button [disabled]="buttonLocked" (click)="register()" color="accent"
+        (click)="lockButton()">Zarejestruj się</button>
+    </div>
+  </mat-card-actions>
+</mat-card>
+
+<mat-divider></mat-divider>
+
+<div class="center-container">
+  <span>Masz już konto?</span>
+  <br>
+  <button mat-raised-button class="login-button" color="accent" [routerLink]="['/login']">Zaloguj się</button>
+</div>

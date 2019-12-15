@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';;
+import { Component, OnInit } from '@angular/core';import { TokenStorage } from '../core/token.storage';
+;
 
 @Component({
   selector: 'app-course',
@@ -8,9 +9,21 @@ import { Component, OnInit } from '@angular/core';;
 export class CourseComponent implements OnInit {
 
 
-  constructor() { }
+  isInstructor: boolean = false;
+
+  constructor(private token: TokenStorage) { }
 
   ngOnInit(): void {
+    this.isUserAnInstructor();
+  }
+
+  isUserAnInstructor(): void {
+    let roles = this.token.getAuthorities();
+    roles.forEach(role => {
+      if (role==='ROLE_INSTRUCTOR') {
+        this.isInstructor = true;
+      }
+    })
   }
 
 }

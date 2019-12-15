@@ -1,31 +1,46 @@
 <mat-card class="my-card">
-    <mat-card-header>
-      <mat-card-title>Zaloguj się</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <form class="my-form">
-        <table class="full-width" cellspacing="0">
-          <tr>
-            <td>
-              <mat-form-field class="full-width">
-                <input matInput placeholder="Login" [(ngModel)]="username" name="username" required>
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td><mat-form-field class="full-width">
+  <mat-card-header>
+    <mat-card-title>Zaloguj się</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form class="my-form">
+      <table class="full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Login" [(ngModel)]="username" name="username" required>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="full-width">
               <input matInput placeholder="Hasło" [(ngModel)]="password" type="password" name="password" required>
-            </mat-form-field></td>
-          </tr>
-          <tr>
-            <td><div *ngIf="loginFailed === true">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div *ngIf="loginFailed === true">
               <p>{{this.errorMsg}}</p>
-            </div></td>
-          </tr>
-        </table>
-      </form>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-raised-button (click)="login()" color="primary">Zaloguj się</button>
-    </mat-card-actions>
-  </mat-card>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <div class="center-container-no-top-margin">
+      <button mat-raised-button (click)="login()" color="accent">Zaloguj się</button>
+    </div>
+  </mat-card-actions>
+</mat-card>
+
+<mat-divider></mat-divider>
+
+<div class="center-container">
+  <span>Nie posiadasz konta?</span>
+  <br>
+  <button mat-raised-button class="register-button" color="accent" [routerLink]="['/register']">Zarejestruj
+    się</button>
+</div>

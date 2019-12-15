@@ -26,7 +26,7 @@ export class ContactComponent implements OnInit {
       data => {
         console.log("Contact request has been sent successfully");
         this.contact.content = '';
-        this.openSnackBar();
+        this.openSnackBar("Wiadomość została wysłana", "OK");
         this.buttonLocked = false;
       }
     )
@@ -36,8 +36,8 @@ export class ContactComponent implements OnInit {
     this.buttonLocked = true;
   }
 
-  openSnackBar() {
-    this._snackBar.open("Wiadomość została wysłana", "OK", {
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
       duration: 4000,
     });
   }

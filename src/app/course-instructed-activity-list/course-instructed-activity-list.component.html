@@ -1,0 +1,57 @@
+<ng-container *ngIf="activities.data.length==0">
+    <div class="center-container">
+        <h4>Nikt się jeszcze nie zapisał na zajęcia praktyczne wewnątrz tego kursu.</h4>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="activities.data.length>0">
+    <mat-form-field>
+        <input matInput [matDatepicker]="picker" [min]="minDate" [max]="maxDate"
+            (dateChange)="applyFilter($event.target.value)" (keyup)="applyFilter($event.target.value)"
+            placeholder="Data">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <div class="example-container mat-elevation-z8">
+        <mat-table #table [dataSource]="activities">
+
+            <ng-container matColumnDef="dateOfActivity">
+                <mat-header-cell *matHeaderCellDef>Data</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.dateOfActivity.substring(0,10)}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="timeOfActivity">
+                <mat-header-cell *matHeaderCellDef>Godzina</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.dateOfActivity.substring(11,16)}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="student">
+                <mat-header-cell *matHeaderCellDef>Uczeń</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.student.name}} {{element.student.surname}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="action">
+                <mat-header-cell *matHeaderCellDef>Ocena</mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    <bar-rating name="rating" [(ngModel)]="rate" [max]="5" [theme]="'stars'" (click)="rateActivity(element.id)"></bar-rating>
+                </mat-cell>
+            </ng-container>
+
+
+            <ng-container matColumnDef="second-action">
+                <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                <mat-cell *matCellDef="let element"><button mat-raised-button color="accent"
+                        (click)="selectActivityId(element.id)"
+                        [routerLink]="['./activity-add-comment']">Skomentuj</button>
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+        </mat-table>
+
+        <router-outlet></router-outlet>
+    </div>
+</ng-container>

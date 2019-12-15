@@ -32,17 +32,17 @@
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item>
-            <mat-icon>dialpad</mat-icon>
-            <span>Redial</span>
+          <button mat-menu-item (click)="deleteUser(element.username)">
+            <mat-icon>delete</mat-icon>
+            <span>Usuń użytkownika</span>
           </button>
-          <button mat-menu-item disabled>
-            <mat-icon>voicemail</mat-icon>
-            <span>Check voice mail</span>
+          <button mat-menu-item (click)="makeUserAdmin(element.username)">
+            <mat-icon>verified_user</mat-icon>
+            <span>Nadaj uprawnienia administratora</span>
           </button>
-          <button mat-menu-item>
-            <mat-icon>notifications_off</mat-icon>
-            <span>Disable alerts</span>
+          <button mat-menu-item (click)="makeUserInstructor(element.username)">
+            <mat-icon>book</mat-icon>
+            <span>Nadaj uprawnienia instruktora</span>
           </button>
         </mat-menu>
       </mat-cell>
