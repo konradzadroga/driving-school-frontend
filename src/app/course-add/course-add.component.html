@@ -1,0 +1,70 @@
+<mat-card class="my-card">
+    <mat-card-header>
+      <mat-card-title style="text-align: center;">Dodaj kurs</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form class="my-form">
+        <table class="full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="full-width">
+                <mat-select placeholder="Kategoria" [(ngModel)]="category" name="category" required>
+                    <mat-option *ngFor="let categoryy of categories" value={{categoryy}}>{{categoryy}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Opis" maxlength="256" [(ngModel)]="description" name="description" required>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="full-width">
+                <mat-select placeholder="Liczba miejsc" [(ngModel)]="places" name="places" required>
+                    <mat-option value=15>15</mat-option>
+                    <mat-option value=20>20</mat-option>
+                    <mat-option value=25>25</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Koszt" [(ngModel)]="cost" name="cost" required>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="full-width">
+                <mat-select placeholder="Login instruktora" [(ngModel)]="instructorUsername" name="instructorUsername" required>
+                    <mat-option *ngFor="let instructor of instructors" value={{instructor}}>{{instructor}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="full-width">
+                <input matInput [matDatepicker]="picker" [min]="minDate" placeholder="Data startu kursu" [(ngModel)]="startDate"
+                  name="startDate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="center-container-no-top-margin">
+        <button mat-raised-button color="accent" (click)="addCourse()">Dodaj kurs</button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+  

@@ -13,8 +13,13 @@ export class AuthService {
 
   attemptAuth(username: string, password: string): Observable<any> {
     const credentials = {username: username, password: password};
+    const options = {responseType: 'text' as 'json'}
     console.log('Trying to authenticate.');
-    return this.http.post<any>(this.appUrl + "signin", credentials);
+    return this.http.post<any>(this.appUrl + "signin", credentials).pipe(
+      catchError((err: HttpErrorResponse) => {
+        return throwError(err.error.message);
+      })
+    )
   }
 
   attemptRegistration(username: string, name: string, surname: string, email: string, pesel: string, birthdate: Date,

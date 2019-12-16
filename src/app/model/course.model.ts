@@ -15,3 +15,12 @@ export interface Course {
     instructorUsername: string;
     instructorNameAndSurname: string;
   }
+
+  export interface AddCourseDTO {
+    category: string;
+    description: string;
+    places: number;
+    startdate: Date;
+    cost: number;
+    instructorUsername: string;
+  }

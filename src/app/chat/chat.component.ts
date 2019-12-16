@@ -25,6 +25,7 @@ export class ChatComponent implements OnInit {
   showMode: string = "Administratorzy";
   selectedRow;
   interval: any;
+  noMessagesYet: boolean = false;
 
 
   constructor(private messageService: MessageService, private userService: UserService, private token: TokenStorage) { }
@@ -42,6 +43,9 @@ export class ChatComponent implements OnInit {
     this.messageService.getMessagesWithParticularUser(this.receiverUsername).subscribe(
       messages => {
         this.messages = messages;
+        this.noMessagesYet = false;
+      }, error => {
+        this.noMessagesYet = true;
       }
     );
   }

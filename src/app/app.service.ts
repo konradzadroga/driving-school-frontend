@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable, BehaviorSubject} from 'rxjs';
 import {UserBasicDTO, UserDTO} from './model/user.model';
 import {ActivityDTO} from './model/activity.model'
-import {CourseDTO} from './model/course.model'
+import {CourseDTO, AddCourseDTO} from './model/course.model'
 import {MessageDTO, SendMessageDTO} from './model/message.model'
 import {PictureDTO} from './model/picture.model'
 import {ContactDTO} from './model/contact.model';
@@ -74,6 +74,10 @@ export class CourseService {
 
   public getInstructorCourses(username: string): Observable<CourseDTO[]> {
     return this.http.get<CourseDTO[]>(this.url + '/instructor/' + username);
+  }
+
+  public addCourse(courseDTO: AddCourseDTO): Observable<CourseDTO> {
+    return this.http.post<CourseDTO>(this.url + '/add', courseDTO);
   }
 
 }

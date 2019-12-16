@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import {MatDialog} from '@angular/material';
+import {MatDialog, ErrorStateMatcher} from '@angular/material';
 import {AuthService} from '../core/auth.service';
 import {TokenStorage} from '../core/token.storage';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -14,11 +15,22 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router, public dialog: MatDialog, private authService: AuthService, private token: TokenStorage) {
   }
 
-  username: string;
-  password: string;
+  username: string = '';
+  password: string = '';
   loginFailed: boolean = false;
   loggedIn: boolean = false;
   errorMsg: string = '';
+
+  matcher = new ErrorStateMatcher();
+
+  usernameFC = new FormControl('', [
+    Validators.required,
+  ])
+
+  passwordFC = new FormControl('', [
+    Validators.required,
+    Validators.minLength(6)
+  ]);
 
   ngOnInit() {
     if (this.token.isUserSignedIn()) {
@@ -37,7 +49,8 @@ export class LoginComponent implements OnInit {
         this.token.reloadPage();
       },
       error => {
-        this.errorMsg = error.error.message;
+        console.log(error);
+        this.errorMsg = error;
         this.loginFailed = true;
       }
     );

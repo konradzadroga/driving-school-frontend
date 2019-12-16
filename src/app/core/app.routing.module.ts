@@ -19,6 +19,7 @@ import { CourseInstructedActivityListComponent } from '../course-instructed-acti
 import { PaymentSuccesfullComponent } from '../payment-succesfull/payment-succesfull.component';
 import { CourseActivityAddCommentComponent } from '../course-activity-add-comment/course-activity-add-comment.component';
 import { CourseActivityMyListComponent } from '../course-activity-my-list/course-activity-my-list.component';
+import { CourseAddComponent } from '../course-add/course-add.component';
 
 const routes: Routes = [
   { path: 'user', component: UserComponent },
@@ -40,7 +41,8 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   {
     path: 'admin', component: AdminPanelComponent, children:
-      [{path: 'user-list', component: UserListComponent}]
+      [{path: 'user-list', component: UserListComponent},
+      {path: 'add-course', component: CourseAddComponent}]
   },
   { path: '', component: HomeComponent },
   { path: 'payment', component: PaymentComponent},

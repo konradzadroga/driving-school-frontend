@@ -47,8 +47,8 @@ export class AppComponent {
 
   signOut(): void {
     this.token.signOut();
-    this.router.navigate(['home']);
-    this.token.reloadPage();
+    this.router.navigate(['home']).then(() =>
+    this.token.reloadPage());
   }
 
 }

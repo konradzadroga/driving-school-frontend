@@ -27,7 +27,6 @@ export class Interceptor implements HttpInterceptor {
        if (err.status !== 401) {
         return;
        }
-       this.router.navigate(['home']);
      }
    }));
 

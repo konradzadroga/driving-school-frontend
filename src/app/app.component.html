@@ -3,6 +3,10 @@
     <mat-toolbar-row>
       <span class="my-spacer"></span>
       <ng-container *ngIf="!isLoggedIn">
+        <button mat-button class="my-toolbar-button" [routerLink]="['/']">
+          <mat-icon>home</mat-icon>
+          <span class="underline-span">Strona startowa</span>
+        </button>
         <button mat-button class="my-toolbar-button" [routerLink]="['/login']">
           <mat-icon>vpn_key</mat-icon>
           <span class="underline-span">Zaloguj się</span>
@@ -18,12 +22,16 @@
       </ng-container>
       <ng-container *ngIf="isLoggedIn">
         <ng-container *ngIf="isAdmin">
-          <button mat-button class="my-toolbar-button" [routerLink]="['/admin']">
+          <button mat-button class="my-toolbar-button" [routerLink]="['/']">
+            <mat-icon>home</mat-icon>
+            <span class="underline-span">Strona startowa</span>
+          </button>
+          <button mat-button class="my-toolbar-button" [routerLink]="['/admin/user-list']">
             <mat-icon>verified_user</mat-icon>
             <span class="underline-span">Panel administratora</span>
           </button>
         </ng-container>
-        <button mat-button class="my-toolbar-button" [routerLink]="['/course']">
+        <button mat-button class="my-toolbar-button" [routerLink]="['/course/course-mine-list']">
           <mat-icon>school</mat-icon>
           <span class="underline-span">Kursy</span>
         </button>

@@ -6,7 +6,7 @@
             <mat-cell *matCellDef="let element"> {{element.category}} </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="description">
+        <ng-container matColumnDef="description" cdkColumnDef="desc-column">
             <mat-header-cell *matHeaderCellDef>Opis</mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
         </ng-container>
@@ -22,7 +22,7 @@
         </ng-container>
 
         <ng-container matColumnDef="instructorNameAndSurname">
-            <mat-header-cell *matHeaderCellDef>Login instruktora</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>Imię i nazwisko instruktora</mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.instructorNameAndSurname}} </mat-cell>
         </ng-container>
 
@@ -35,7 +35,8 @@
             <mat-header-cell *matHeaderCellDef>Zapisz się</mat-header-cell>
             <mat-cell *matCellDef="let element"><button mat-raised-button color="accent"
                     [routerLink]="['/payment']" (click)="selectCourseId(element.id)"
-                    [disabled]="checkIfAlreadyRegistered(element.id)">Zapisz się</button>
+                    [disabled]="checkIfAlreadyRegistered(element.id)"
+                    [disabled]="element.places<1">Zapisz się</button>
             </mat-cell>
         </ng-container>
 

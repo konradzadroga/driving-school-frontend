@@ -32,6 +32,7 @@ import { PaymentSuccesfullComponent } from './payment-succesfull/payment-succesf
 import { CourseActivityAddCommentComponent } from './course-activity-add-comment/course-activity-add-comment.component'
 import { BarRatingModule } from "ngx-bar-rating";
 import { CourseActivityMyListComponent } from './course-activity-my-list/course-activity-my-list.component';
+import { CourseAddComponent } from './course-add/course-add.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { CourseActivityMyListComponent } from './course-activity-my-list/course-
     CourseInstructedActivityListComponent,
     PaymentSuccesfullComponent,
     CourseActivityAddCommentComponent,
-    CourseActivityMyListComponent
+    CourseActivityMyListComponent,
+    CourseAddComponent
   ],
   imports: [
     BrowserModule,

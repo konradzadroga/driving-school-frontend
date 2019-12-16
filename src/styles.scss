@@ -29,6 +29,11 @@ $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
   width: 100%;
 }
 
+.full-width-with-margin {
+  width: 100%;
+  margin-top: 5px;
+}
+
 .my-icon {
   padding: 0 14px;
 }

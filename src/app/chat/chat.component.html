@@ -105,28 +105,43 @@
             </div>
         </div>
         <div class="col-sm-8">
-            <div class="chat-container">
-                <ng-container *ngFor="let message of messages">
-                    <span class="message-sender"
-                        [ngClass]="{'message-sender-right': myUsername === message.sender.username}">
-                        {{message.sender.username}}</span>
-                    <mat-card class="message" id="message-{{message.id}}"
-                        [ngClass]="{'message-right': myUsername === message.sender.username}">
-                        {{message.content}}
-                    </mat-card>
+            <ng-container *ngIf="noMessagesYet">
+                <div class="center-container">
+                    <span>Wybierz rozmówcę</span>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="!noMessagesYet">
+                <ng-container *ngIf="messages.length===0">
+                    <div class="center-container">
+                        <span>Nie masz jeszcze wiadomości z tym użytkownikiem. Napisz pierwszą.</span>
+                    </div>
                 </ng-container>
-            </div>
-            <div class="new-message-container">
-                <mat-card>
-                    <mat-form-field class="message-form">
-                        <input matInput placeholder="Nowa wiadomość" maxlength=256 #inputmessage
-                            [(ngModel)]="newMessageContent">
-                        <mat-hint>{{inputmessage.value.length}} / 256</mat-hint>
-                    </mat-form-field>
-                    <button mat-icon-button id="send-button" color="primary" (click)="sendMessage()" (click)="newMessageContent=''">
-                        <mat-icon>send</mat-icon>
-                    </button>
-                </mat-card>
-            </div>
+                <ng-container *ngIf="messages.length>0">
+                    <div class="chat-container">
+                        <ng-container *ngFor="let message of messages">
+                            <span class="message-sender"
+                                [ngClass]="{'message-sender-right': myUsername === message.sender.username}">
+                                {{message.sender.username}}</span>
+                            <mat-card class="message" id="message-{{message.id}}"
+                                [ngClass]="{'message-right': myUsername === message.sender.username}">
+                                {{message.content}}
+                            </mat-card>
+                        </ng-container>
+                    </div>
+                </ng-container>
+                <div class="new-message-container">
+                    <mat-card>
+                        <mat-form-field class="message-form">
+                            <input matInput placeholder="Nowa wiadomość" maxlength=256 #inputmessage
+                                [(ngModel)]="newMessageContent">
+                            <mat-hint>{{inputmessage.value.length}} / 256</mat-hint>
+                        </mat-form-field>
+                        <button mat-icon-button id="send-button" color="primary" (click)="sendMessage()"
+                            (click)="newMessageContent=''">
+                            <mat-icon>send</mat-icon>
+                        </button>
+                    </mat-card>
+                </div>
+            </ng-container>
         </div>
     </div>

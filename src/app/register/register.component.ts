@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../core/auth.service';
+import { ErrorStateMatcher } from '@angular/material';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -12,16 +14,49 @@ export class RegisterComponent  {
   constructor(private router: Router, private authService: AuthService) { }
 
   public errorMsg;
-  username: string;
-  name: string;
-  surname: string;
-  email: string;
-  pesel: string;
+  username: string = '';
+  name: string = '';
+  surname: string = '';
+  email: string = '';
+  pesel: string = '';
   birthdate: Date;
-  password: string;
+  password: string = '';
   roles = ['ROLE_USER'];
   buttonLocked: boolean = false;
   maxDate: Date = new Date(2001, 0, 1);
+
+  matcher = new ErrorStateMatcher();
+
+  usernameFC = new FormControl('', [
+    Validators.required,
+  ]);
+
+  nameFC = new FormControl('', [
+    Validators.required,
+  ]);
+
+  surnameFC = new FormControl('', [
+    Validators.required,
+  ]);
+
+  emailFC = new FormControl('', [
+    Validators.required,
+  ])
+
+  birthdateFC = new FormControl('', [
+    Validators.required,
+  ])
+
+  passwordFC = new FormControl('', [
+    Validators.required,
+    Validators.minLength(6)
+  ]);
+
+  peselFC = new FormControl('', [
+    Validators.required,
+    Validators.minLength(11),
+    Validators.maxLength(11)
+  ]);
 
   register(): void {
     this.authService.attemptRegistration(this.username, this.name, this.surname, this.email, this.pesel,

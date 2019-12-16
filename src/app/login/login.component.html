@@ -7,22 +7,28 @@
       <table class="full-width" cellspacing="0">
         <tr>
           <td>
-            <mat-form-field class="full-width">
-              <input matInput placeholder="Login" [(ngModel)]="username" name="username" required>
+            <mat-form-field class="full-width-with-margin">
+              <input matInput placeholder="Login" [(ngModel)]="username" [formControl]="usernameFC" [errorStateMatcher]="matcher" name="username" required>
+              <mat-error>
+                Login jest wymagany
+              </mat-error>
             </mat-form-field>
           </td>
         </tr>
         <tr>
           <td>
-            <mat-form-field class="full-width">
-              <input matInput placeholder="Hasło" [(ngModel)]="password" type="password" name="password" required>
+            <mat-form-field class="full-width-with-margin">
+              <input matInput placeholder="Hasło" [(ngModel)]="password" [formControl]="passwordFC" [errorStateMatcher]="matcher" type="password" name="password" required>
+              <mat-error>
+                Hasło jest wymagane i musi zawierać co najmniej 6 znaków
+              </mat-error>
             </mat-form-field>
           </td>
         </tr>
         <tr>
           <td>
             <div *ngIf="loginFailed === true">
-              <p>{{this.errorMsg}}</p>
+              <span style="color: #b30c49"><i>Niepoprawna nazwa użytkownika lub hasło</i></span>
             </div>
           </td>
         </tr>
@@ -31,7 +37,7 @@
   </mat-card-content>
   <mat-card-actions>
     <div class="center-container-no-top-margin">
-      <button mat-raised-button (click)="login()" color="accent">Zaloguj się</button>
+      <button mat-raised-button (click)="login()" color="accent" [disabled]="usernameFC.invalid || passwordFC.invalid">Zaloguj się</button>
     </div>
   </mat-card-actions>
 </mat-card>
