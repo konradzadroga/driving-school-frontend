@@ -1,38 +1,41 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="accent" class="mat-elevation-z12">
     <mat-toolbar-row>
-        <button mat-button [routerLink]="['../course-activities']">Wszystkie zajęcia</button>
-        <button mat-button [routerLink]="['../course-activities-mine']">Moje zajęcia</button>
+        <button mat-button [routerLink]="['../course-activities']">{{dictionary.allActivities}}</button>
+        <button mat-button [routerLink]="['../course-activities-mine']">{{dictionary.myActivities}}</button>
     </mat-toolbar-row>
 </mat-toolbar>
 
 <ng-container *ngIf="activities.data.length==0">
-    <div class="center-container">
-        <h4>Nie jesteś zapisany/a na żadne zajęcia.</h4>
+    <div class="center-container-with-top-margin">
+        <h4>{{dictionary.youAreNotSignedForAnyActivities}}</h4>
     </div>
 </ng-container>
 
 <ng-container *ngIf="activities.data.length>0">
+    <div class="center-container-with-top-and-bottom-margin">
+        <h4>{{dictionary.belowAllActivitiesYourAreSignedTo}}</h4>
+    </div>
     <div class="example-container mat-elevation-z8">
         <mat-table #table [dataSource]="activities">
 
             <ng-container matColumnDef="dateOfActivity">
-                <mat-header-cell *matHeaderCellDef>Data</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef>{{dictionary.date}}</mat-header-cell>
                 <mat-cell *matCellDef="let element"> {{element.dateOfActivity.substring(0,10)}} </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="timeOfActivity">
-                <mat-header-cell *matHeaderCellDef>Godzina</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef>{{dictionary.hour}}</mat-header-cell>
                 <mat-cell *matCellDef="let element"> {{element.dateOfActivity.substring(11,16)}} </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="instructor">
-                <mat-header-cell *matHeaderCellDef>Instruktor</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef>{{dictionary.instructor}}</mat-header-cell>
                 <mat-cell *matCellDef="let element"> {{element.instructor.name}} {{element.instructor.surname}}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="rate">
-                <mat-header-cell *matHeaderCellDef>Ocena</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef>{{dictionary.rate}}</mat-header-cell>
                 <mat-cell *matCellDef="let element">
                     <form #form="ngForm">
                         <bar-rating name="rating" [(rate)]="element.rate" disabled="true" [max]="5" [theme]="'stars'"></bar-rating>
@@ -41,7 +44,7 @@
             </ng-container>
 
             <ng-container matColumnDef="comment">
-                <mat-header-cell *matHeaderCellDef>Komentarz</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef>{{dictionary.comment}}</mat-header-cell>
                 <mat-cell *matCellDef="let element"> {{element.comment}}</mat-cell>
             </ng-container>
 

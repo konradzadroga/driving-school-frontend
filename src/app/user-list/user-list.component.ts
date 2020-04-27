@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import { User, UserDTO } from '../model/user.model';
-import { UserService } from '../app.service';
+import { UserService, DictionaryService } from '../app.service';
 
 @Component({
   selector: 'app-user-list',
@@ -13,7 +13,7 @@ export class UserListComponent implements OnInit {
   allUsersDisplayedColumns = ['username', 'name', 'surname', 'email', 'roles', 'action'];
   allUsers = new MatTableDataSource<UserDTO>();
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, public dictionary: DictionaryService) { }
 
   ngOnInit() {
     this.refreshUsersInfo();

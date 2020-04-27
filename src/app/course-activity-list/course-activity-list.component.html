@@ -1,9 +1,13 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="accent" class="mat-elevation-z12">
     <mat-toolbar-row>
-        <button mat-button [routerLink]="['../course-activities']">Wszystkie zajęcia</button>
-        <button mat-button [routerLink]="['../course-activities-mine']">Moje zajęcia</button>
+        <button mat-button [routerLink]="['../course-activities']">{{dictionary.allActivities}}</button>
+        <button mat-button [routerLink]="['../course-activities-mine']">{{dictionary.myActivities}}</button>
     </mat-toolbar-row>
 </mat-toolbar>
+
+<div class="center-container-with-top-and-bottom-margin">
+    <h4>{{dictionary.belowAllActivitiesInThisCourse}}</h4>
+</div>
 
 <mat-form-field>
     <input matInput [matDatepicker]="picker" [min]="minDate" [max]="maxDate"
@@ -13,27 +17,28 @@
 </mat-form-field>
 
 <div class="example-container mat-elevation-z8">
+
     <mat-table #table [dataSource]="activities">
 
         <ng-container matColumnDef="dateOfActivity">
-            <mat-header-cell *matHeaderCellDef>Data</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>{{dictionary.date}}</mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.dateOfActivity.substring(0,10)}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="timeOfActivity">
-            <mat-header-cell *matHeaderCellDef>Godzina</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>{{dictionary.hour}}</mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.dateOfActivity.substring(11,16)}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="instructor">
-            <mat-header-cell *matHeaderCellDef>Instruktor</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>{{dictionary.instructor}}</mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.instructor.name}} {{element.instructor.surname}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="action">
             <mat-header-cell *matHeaderCellDef></mat-header-cell>
             <mat-cell *matCellDef="let element"><button mat-raised-button color="accent"
-                    [disabled]="element.student !== null" (click)="signUp(element.id)">Zapisz się</button>
+                    [disabled]="element.student !== null" (click)="signUp(element.id)">{{dictionary.signIn}}</button>
             </mat-cell>
         </ng-container>
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource, MatSnackBar } from '@angular/material';
 import { CourseDTO } from '../model/course.model';
 import { UserDTO } from '../model/user.model';
-import { CourseService, UserService } from '../app.service';
+import { CourseService, UserService, DictionaryService } from '../app.service';
 
 declare let paypal: any;
 
@@ -19,7 +19,7 @@ export class CourseAllListComponent implements OnInit {
   courseId: number;
   user: UserDTO;
 
-  constructor(private courseService: CourseService, private userService: UserService, private _snackBar: MatSnackBar) { }
+  constructor(private courseService: CourseService, private userService: UserService, private _snackBar: MatSnackBar, public dictionary: DictionaryService) { }
 
   ngOnInit() {
     this.refreshCourseInfo();

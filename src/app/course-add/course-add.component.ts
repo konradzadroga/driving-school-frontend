@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService, CourseService } from '../app.service';
+import { UserService, CourseService, DictionaryService } from '../app.service';
 import { UserBasicDTO } from '../model/user.model';
 import { AddCourseDTO, CourseDTO } from '../model/course.model';
 import { MatSnackBar } from '@angular/material';
@@ -22,7 +22,7 @@ export class CourseAddComponent implements OnInit {
   categories: string[] = ['AM', 'A1', 'A2', 'A', 'B1', 'B', 'B+E', 'C', 'C1', 'C+E', 'D', 'D1', 'D1+E', 'D+E', 'Tramwaj' ]
 
 
-  constructor(private userService: UserService, private courseService: CourseService, private _snackBar: MatSnackBar) {
+  constructor(private userService: UserService, private courseService: CourseService, private _snackBar: MatSnackBar, public dictionary: DictionaryService) {
    }
 
   ngOnInit() {
@@ -57,7 +57,6 @@ export class CourseAddComponent implements OnInit {
       }
     )
   }
-
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {

@@ -1,0 +1,52 @@
+<ng-container *ngIf="dataLoaded | async">
+    <ng-container *ngIf="myExams.data.length==0">
+        <div class="center-container-with-top-margin">
+            <h4>{{dictionary.youHaveNoExams}}</h4>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="myExams.data.length>0">
+    <div class="center-container-with-top-and-bottom-margin">
+        <h4>{{dictionary.bellowAllInternalExams}}</h4>
+    </div>
+    
+    <div style="z-index: 0 !important;" class="example-container mat-elevation-z8">
+        <mat-table #table [dataSource]="myExams">
+    
+            <ng-container matColumnDef="dateOfExam">
+                <mat-header-cell *matHeaderCellDef>{{dictionary.date}}</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.dateOfExam.substring(0,10)}} </mat-cell>
+            </ng-container>
+            
+            <ng-container matColumnDef="timeOfExam">
+                <mat-header-cell *matHeaderCellDef>{{dictionary.hour}}</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.dateOfExam.substring(11,16)}} </mat-cell>
+            </ng-container>
+    
+            <ng-container matColumnDef="instructorNameAndSurname">
+                <mat-header-cell *matHeaderCellDef>{{dictionary.instructor}}</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.instructorNameAndSurname}} </mat-cell>
+            </ng-container>
+    
+            <ng-container matColumnDef="passed">
+                <mat-header-cell *matHeaderCellDef>{{dictionary.examPassed}}</mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    <ng-container *ngIf="element.passed==true">Tak</ng-container>
+                    <ng-container *ngIf="element.passed==false">Nie</ng-container>
+                </mat-cell>
+            </ng-container>
+    
+            <ng-container matColumnDef="showCourse">
+                <mat-header-cell *matHeaderCellDef>{{dictionary.showCourseInfo}}</mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    <button mat-raised-button color="primary" (click)="selectCourseId(element.courseId)" [routerLink]="['/course-info']">{{dictionary.showCourseInfo}}</button>
+                </mat-cell>
+            </ng-container>
+    
+            <mat-header-row *matHeaderRowDef="myExamsDisplayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: myExamsDisplayedColumns;"></mat-row>
+    
+        </mat-table>
+    </div>
+    </ng-container>
+</ng-container>

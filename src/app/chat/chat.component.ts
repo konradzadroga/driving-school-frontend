@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Message, MessageDTO, SendMessageDTO } from '../model/message.model';
-import { MessageService, UserService } from '../app.service';
+import { MessageService, UserService, DictionaryService } from '../app.service';
 import { TokenStorage } from '../core/token.storage';
 import { MatTableDataSource } from '@angular/material';
 import { UserBasicDTO } from '../model/user.model';
@@ -28,7 +28,7 @@ export class ChatComponent implements OnInit {
   noMessagesYet: boolean = false;
 
 
-  constructor(private messageService: MessageService, private userService: UserService, private token: TokenStorage) { }
+  constructor(private messageService: MessageService, private userService: UserService, private token: TokenStorage, public dictionary: DictionaryService) { }
 
   ngOnInit() {
     this.myUsername = this.token.getUsername();

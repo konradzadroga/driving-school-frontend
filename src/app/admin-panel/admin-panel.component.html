@@ -1,7 +1,7 @@
-<mat-toolbar color="accent">
+<mat-toolbar color="accent" style="z-index: 1 !important" class="mat-elevation-z12">
     <mat-toolbar-row>
-        <button mat-button [routerLink]="['./user-list']">Lista użytkowników</button>
-        <button mat-button [routerLink]="['./add-course']">Dodaj kurs</button>
+        <button mat-button [routerLink]="['./user-list']">{{dictionary.listOfUsers}}</button>
+        <button mat-button [routerLink]="['./add-course']">{{dictionary.addCourse}}</button>
     </mat-toolbar-row>
 </mat-toolbar>
 <router-outlet></router-outlet>

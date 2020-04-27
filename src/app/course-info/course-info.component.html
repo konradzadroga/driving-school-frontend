@@ -1,0 +1,60 @@
+<ng-container *ngIf="dataLoaded | async">
+    <mat-card class="course-card">
+        <mat-card-header>
+            <mat-card-title style="text-align: center; width: 520px">{{dictionary.infoAboutTheCourse}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-list>
+                <div class="row">
+                    <div class="col">
+                        <mat-list-item>
+                            {{dictionary.category}}:
+                        </mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item>
+                            {{dictionary.description}}:
+                        </mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item>
+                            {{dictionary.startDate}}:
+                        </mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item>
+                            {{dictionary.instructorLogin}}:
+                        </mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item>
+                            {{dictionary.instructorNameAndSurname}}:
+                        </mat-list-item>
+                    </div>
+                    <div class="col">
+                        <mat-list-item>
+                            {{course.category}}
+                        </mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item>
+                            {{course.description}}
+                        </mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item>
+                            {{course.startdate.substring(0,10)}}
+                        </mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item>
+                            {{course.instructorUsername}}
+                        </mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item>
+                            {{course.instructorNameAndSurname}}
+                        </mat-list-item>
+                    </div>
+                </div>
+            </mat-list>
+        </mat-card-content>
+        <mat-card-actions>
+            <div class="center-container-no-top-margin">
+                <button mat-raised-button color="accent" [routerLink]="['/exam']">{{dictionary.backToExamMenu}}</button>
+            </div>
+        </mat-card-actions>
+    </mat-card>
+</ng-container>

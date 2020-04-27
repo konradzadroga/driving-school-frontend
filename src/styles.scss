@@ -12,8 +12,8 @@ $default-accent: mat-palette($mat-teal, 700);
 $default-warn: mat-palette($mat-amber, 700);
 $default-theme: mat-light-theme($default-primary, $default-accent, $default-warn);
 
-$dark-primary: mat-palette($mat-indigo, 500);
-$dark-accent: mat-palette($mat-indigo, 700);
+$dark-primary: mat-palette($mat-purple, 700);
+$dark-accent: mat-palette($mat-purple, 800);
 $dark-warn: mat-palette($mat-pink, 800);
 $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 
@@ -25,8 +25,16 @@ $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
   @include angular-material-theme($dark-theme);
 }
 
+* {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
 .full-width {
   width: 100%;
+}
+
+.mat-toolbar {
+  position: relative;
 }
 
 .full-width-with-margin {
@@ -47,6 +55,11 @@ $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
   margin: 5% auto;
 }
 
+.course-card {
+  width: 600px;
+  margin: 5% auto;
+}
+
 .my-second-card {
   width: 400px;
   margin: 20% auto;
@@ -59,6 +72,17 @@ $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 
 .center-container {
   margin-top: 10px;
+  text-align: center;
+}
+
+.center-container-with-top-margin {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.center-container-with-top-and-bottom-margin {
+  margin-top: 25px;
+  margin-bottom: 25px;
   text-align: center;
 }
 
@@ -80,4 +104,3 @@ $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
   margin-top: 10px;
   text-align: center;
 }
-

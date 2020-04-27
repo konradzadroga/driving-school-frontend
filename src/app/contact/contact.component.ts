@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ContactService } from '../app.service';
+import { ContactService, DictionaryService } from '../app.service';
 import { ContactDTO } from '../model/contact.model';
 import { MatSnackBar } from '@angular/material';
 
@@ -16,7 +16,7 @@ export class ContactComponent implements OnInit {
 
   buttonLocked: boolean = false;
 
-  constructor(private contactService: ContactService, private _snackBar: MatSnackBar) { }
+  constructor(private contactService: ContactService, private _snackBar: MatSnackBar, public dictionary: DictionaryService) { }
 
   ngOnInit() {
   }

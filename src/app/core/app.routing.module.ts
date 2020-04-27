@@ -20,6 +20,9 @@ import { PaymentSuccesfullComponent } from '../payment-succesfull/payment-succes
 import { CourseActivityAddCommentComponent } from '../course-activity-add-comment/course-activity-add-comment.component';
 import { CourseActivityMyListComponent } from '../course-activity-my-list/course-activity-my-list.component';
 import { CourseAddComponent } from '../course-add/course-add.component';
+import { ExamComponent } from '../exam/exam.component';
+import { CourseExamListComponent } from '../course-exam-list/course-exam-list.component';
+import { CourseInfoComponent } from '../course-info/course-info.component';
 
 const routes: Routes = [
   { path: 'user', component: UserComponent },
@@ -28,12 +31,15 @@ const routes: Routes = [
     {path: 'course-all-list', component: CourseAllListComponent},
     {path: 'course-mine-list', component: CourseMineListComponent},
     {path: 'course-instructed', component: CourseInstructedComponent},
+    {path: 'course-exam-list', component: CourseExamListComponent},
     {path: 'course-activities', component: CourseActivityListComponent},
     {path: 'course-activities-mine', component: CourseActivityMyListComponent},
     {path: 'course-instructed-activities', component: CourseInstructedActivityListComponent, children: [
       {path: 'activity-add-comment', component: CourseActivityAddCommentComponent}
     ]}
   ] },
+  { path: "course-info", component: CourseInfoComponent},
+  { path: "exam", component: ExamComponent},
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: UserProfileComponent },
   { path: 'home', component: HomeComponent },

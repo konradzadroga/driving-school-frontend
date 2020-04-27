@@ -1,8 +1,14 @@
+<div class="center-container-with-top-and-bottom-margin">
+    <h4>{{dictionary.ourPortalAllowsMessaging}}</h4>
+</div>
+
+<mat-divider></mat-divider>
+
 <div class="messages-container">
     <div class="row">
         <div class="col-sm-4">
             <div class="pick-user-container">
-                <mat-toolbar color="accent">
+                <mat-toolbar color="accent" class="mat-elevation-z8">
                     <mat-toolbar-row>
                         <div class="my-menu">
                             <span>{{showMode}}</span>
@@ -12,36 +18,36 @@
                             <mat-menu #menu="matMenu">
                                 <button mat-menu-item (click)="setMode('admins')">
                                     <mat-icon>verified_user</mat-icon>
-                                    <span>Administratorzy</span>
+                                    <span>{{dictionary.admins}}</span>
                                 </button>
                                 <button mat-menu-item (click)="setMode('instructors')">
                                     <mat-icon>book</mat-icon>
-                                    <span>Instruktorzy</span>
+                                    <span>{{dictionary.instructors}}</span>
                                 </button>
                                 <button mat-menu-item (click)="setMode('users')">
                                     <mat-icon>supervised_user_circle</mat-icon>
-                                    <span>Użytkownicy</span>
+                                    <span>{{dictionary.users}}</span>
                                 </button>
                             </mat-menu>
                         </div>
                     </mat-toolbar-row>
                 </mat-toolbar>
                 <ng-container *ngIf="mode==='admins'">
-                    <mat-table #table [dataSource]="admins">
+                    <mat-table #table [dataSource]="admins" class="mat-elevation-z8">
                         <ng-container matColumnDef="username">
-                            <mat-header-cell *matHeaderCellDef>Login</mat-header-cell>
+                            <mat-header-cell *matHeaderCellDef>{{dictionary.login}}</mat-header-cell>
                             <mat-cell *matCellDef="let element" (click)="switchReceiver(element.username)">
                                 {{element.username}} </mat-cell>
                         </ng-container>
 
                         <ng-container matColumnDef="name">
-                            <mat-header-cell *matHeaderCellDef>Imię</mat-header-cell>
+                            <mat-header-cell *matHeaderCellDef>{{dictionary.name}}</mat-header-cell>
                             <mat-cell *matCellDef="let element" (click)="switchReceiver(element.username)">
                                 {{element.name}} </mat-cell>
                         </ng-container>
 
                         <ng-container matColumnDef="surname">
-                            <mat-header-cell *matHeaderCellDef>Nazwisko</mat-header-cell>
+                            <mat-header-cell *matHeaderCellDef>{{dictionary.surname}}</mat-header-cell>
                             <mat-cell *matCellDef="let element" (click)="switchReceiver(element.username)">
                                 {{element.surname}} </mat-cell>
                         </ng-container>
@@ -53,21 +59,21 @@
                 </ng-container>
 
                 <ng-container *ngIf="mode==='instructors'">
-                    <mat-table #table [dataSource]="instructors">
+                    <mat-table #table [dataSource]="instructors" class="mat-elevation-z8">
                         <ng-container matColumnDef="username">
-                            <mat-header-cell *matHeaderCellDef>Login</mat-header-cell>
+                            <mat-header-cell *matHeaderCellDef>{{dictionary.login}}</mat-header-cell>
                             <mat-cell *matCellDef="let element" (click)="switchReceiver(element.username)">
                                 {{element.username}} </mat-cell>
                         </ng-container>
 
                         <ng-container matColumnDef="name">
-                            <mat-header-cell *matHeaderCellDef>Imię</mat-header-cell>
+                            <mat-header-cell *matHeaderCellDef>{{dictionary.name}}</mat-header-cell>
                             <mat-cell *matCellDef="let element" (click)="switchReceiver(element.username)">
                                 {{element.name}} </mat-cell>
                         </ng-container>
 
                         <ng-container matColumnDef="surname">
-                            <mat-header-cell *matHeaderCellDef>Nazwisko</mat-header-cell>
+                            <mat-header-cell *matHeaderCellDef>{{dictionary.surname}}</mat-header-cell>
                             <mat-cell *matCellDef="let element" (click)="switchReceiver(element.username)">
                                 {{element.surname}} </mat-cell>
                         </ng-container>
@@ -78,21 +84,21 @@
                     </mat-table>
                 </ng-container>
                 <ng-container *ngIf="mode==='users'">
-                    <mat-table #table [dataSource]="users">
+                    <mat-table #table [dataSource]="users" class="mat-elevation-z8">
                         <ng-container matColumnDef="username">
-                            <mat-header-cell *matHeaderCellDef>Login</mat-header-cell>
+                            <mat-header-cell *matHeaderCellDef>{{dictionary.login}}</mat-header-cell>
                             <mat-cell *matCellDef="let element" (click)="switchReceiver(element.username)">
                                 {{element.username}} </mat-cell>
                         </ng-container>
 
                         <ng-container matColumnDef="name">
-                            <mat-header-cell *matHeaderCellDef>Imię</mat-header-cell>
+                            <mat-header-cell *matHeaderCellDef>{{dictionary.name}}</mat-header-cell>
                             <mat-cell *matCellDef="let element" (click)="switchReceiver(element.username)">
                                 {{element.name}} </mat-cell>
                         </ng-container>
 
                         <ng-container matColumnDef="surname">
-                            <mat-header-cell *matHeaderCellDef>Nazwisko</mat-header-cell>
+                            <mat-header-cell *matHeaderCellDef>{{dictionary.surname}}</mat-header-cell>
                             <mat-cell *matCellDef="let element" (click)="switchReceiver(element.username)">
                                 {{element.surname}} </mat-cell>
                         </ng-container>
@@ -107,13 +113,13 @@
         <div class="col-sm-8">
             <ng-container *ngIf="noMessagesYet">
                 <div class="center-container">
-                    <span>Wybierz rozmówcę</span>
+                    <span>{{dictionary.chooseUserToStartChat}}</span>
                 </div>
             </ng-container>
             <ng-container *ngIf="!noMessagesYet">
                 <ng-container *ngIf="messages.length===0">
                     <div class="center-container">
-                        <span>Nie masz jeszcze wiadomości z tym użytkownikiem. Napisz pierwszą.</span>
+                        <span>{{dictionary.noMessagesWithThisUserYet}}</span>
                     </div>
                 </ng-container>
                 <ng-container *ngIf="messages.length>0">
@@ -121,7 +127,7 @@
                         <ng-container *ngFor="let message of messages">
                             <span class="message-sender"
                                 [ngClass]="{'message-sender-right': myUsername === message.sender.username}">
-                                {{message.sender.username}}</span>
+                                {{message.sender.name}} {{message.sender.surname}}</span>
                             <mat-card class="message" id="message-{{message.id}}"
                                 [ngClass]="{'message-right': myUsername === message.sender.username}">
                                 {{message.content}}
@@ -130,9 +136,9 @@
                     </div>
                 </ng-container>
                 <div class="new-message-container">
-                    <mat-card>
+                    <mat-card class="mat-elevation-z8" style="border-radius: 25px;">
                         <mat-form-field class="message-form">
-                            <input matInput placeholder="Nowa wiadomość" maxlength=256 #inputmessage
+                            <input matInput placeholder="{{dictionary.newMessage}}" maxlength=256 #inputmessage
                                 [(ngModel)]="newMessageContent">
                             <mat-hint>{{inputmessage.value.length}} / 256</mat-hint>
                         </mat-form-field>

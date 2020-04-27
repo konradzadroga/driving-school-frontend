@@ -1,5 +1,5 @@
 import { Component, OnInit, NgZone } from '@angular/core';
-import { CourseService, UserService } from '../app.service';
+import { CourseService, UserService, DictionaryService } from '../app.service';
 import { MatSnackBar } from '@angular/material';
 import { CourseDTO } from '../model/course.model';
 import { Router } from '@angular/router';
@@ -18,7 +18,7 @@ export class PaymentComponent implements OnInit {
   courseId: number;
   course: CourseDTO;
 
-  constructor(private courseService: CourseService, private userService: UserService, private router: Router, private ngZone: NgZone) { }
+  constructor(private courseService: CourseService, private userService: UserService, private router: Router, private ngZone: NgZone, public dictionary: DictionaryService) { }
 
   ngOnInit() {
   }

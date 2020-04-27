@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';import { TokenStorage } from '../core/token.storage';
+import { DictionaryService } from '../app.service';
 ;
 
 @Component({
@@ -11,7 +12,7 @@ export class CourseComponent implements OnInit {
 
   isInstructor: boolean = false;
 
-  constructor(private token: TokenStorage) { }
+  constructor(private token: TokenStorage, public dictionary: DictionaryService) { }
 
   ngOnInit(): void {
     this.isUserAnInstructor();

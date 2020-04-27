@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivityService } from '../app.service';
+import { ActivityService, DictionaryService } from '../app.service';
 import { MatSnackBar } from '@angular/material';
 
 @Component({
@@ -13,7 +13,7 @@ export class CourseActivityAddCommentComponent implements OnInit {
   activityId: number;
   comment: string = '';
 
-  constructor(private activityService: ActivityService, private _snackBar: MatSnackBar) { }
+  constructor(private activityService: ActivityService, private _snackBar: MatSnackBar, public dictionary: DictionaryService) { }
 
   ngOnInit() {
     this.activityService.currentActivityId.subscribe(activityId => this.activityId = activityId);
@@ -24,7 +24,7 @@ export class CourseActivityAddCommentComponent implements OnInit {
       data => {
         console.log("Comment has been sent successfully");
         this.comment = '';
-        this.openSnackBar("Komentarz został dodany", "OK");
+        this.openSnackBar(this.dictionary.commentAddedSuccessfully, "OK");
       }
     )
   }

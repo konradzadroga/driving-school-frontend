@@ -1,9 +1,9 @@
-<mat-toolbar color="accent">
+<mat-toolbar style="z-index: 1 !important" color="accent" class="mat-elevation-z12">
   <mat-toolbar-row>
-    <button mat-button [routerLink]="['./course-all-list']">Wszystkie kursy</button>
-    <button mat-button [routerLink]="['./course-mine-list']">Moje kursy</button>
+    <button mat-button [routerLink]="['./course-all-list']">{{dictionary.allCourses}}</button>
+    <button mat-button [routerLink]="['./course-mine-list']">{{dictionary.myCourses}}</button>
     <ng-container *ngIf="isInstructor">
-      <button mat-button [routerLink]="['./course-instructed']">Zarządzane przeze mnie kursy</button>
+      <button mat-button [routerLink]="['./course-instructed']">{{dictionary.coursesManagedByMe}}</button>
     </ng-container>
   </mat-toolbar-row>
 </mat-toolbar>

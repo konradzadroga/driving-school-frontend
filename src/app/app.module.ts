@@ -7,7 +7,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UserComponent } from './user/user.component';
 import {AppRoutingModule} from './core/app.routing.module';
 import { LoginComponent } from './login/login.component';
-import {UserService, CourseService, MessageService, PictureService, ContactService, ActivityService} from "./app.service";
+import {UserService, CourseService, MessageService, PictureService, ContactService, ActivityService, ExamService, DictionaryService} from "./app.service";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthService} from "./core/auth.service";
 import {Interceptor} from "./core/interceptor";
@@ -33,6 +33,10 @@ import { CourseActivityAddCommentComponent } from './course-activity-add-comment
 import { BarRatingModule } from "ngx-bar-rating";
 import { CourseActivityMyListComponent } from './course-activity-my-list/course-activity-my-list.component';
 import { CourseAddComponent } from './course-add/course-add.component';
+import { ProgressSpinnerDialogComponent } from './progress-spinner-dialog/progress-spinner-dialog.component';
+import { ExamComponent } from './exam/exam.component';
+import { CourseExamListComponent } from './course-exam-list/course-exam-list.component';
+import { CourseInfoComponent } from './course-info/course-info.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +61,11 @@ import { CourseAddComponent } from './course-add/course-add.component';
     PaymentSuccesfullComponent,
     CourseActivityAddCommentComponent,
     CourseActivityMyListComponent,
-    CourseAddComponent
+    CourseAddComponent,
+    ProgressSpinnerDialogComponent,
+    ExamComponent,
+    CourseExamListComponent,
+    CourseInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -70,11 +78,14 @@ import { CourseAddComponent } from './course-add/course-add.component';
     NgbModule,
     BarRatingModule
   ],
-  providers: [UserService, AuthService, TokenStorage, CourseService, MessageService, PictureService, ContactService, ActivityService,
+  providers: [UserService, AuthService, TokenStorage, CourseService, MessageService, PictureService, ContactService, ActivityService, ExamService, DictionaryService,
     {provide: HTTP_INTERCEPTORS,
     useClass: Interceptor,
     multi : true}
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    ProgressSpinnerDialogComponent
+  ]
 })
 export class AppModule { }

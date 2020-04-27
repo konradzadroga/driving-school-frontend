@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CourseService, ActivityService } from '../app.service';
+import { CourseService, ActivityService, DictionaryService } from '../app.service';
 import { MatTableDataSource, MatSnackBar } from '@angular/material';
 import { ActivityDTO } from '../model/activity.model';
 import { DatePipe } from '@angular/common';
@@ -24,7 +24,7 @@ export class CourseActivityListComponent implements OnInit {
   maxDate: Date;
   displayedColumns = ['dateOfActivity', 'timeOfActivity', 'instructor', 'action']
 
-  constructor(private courseService: CourseService, private activityService: ActivityService, private _snackBar: MatSnackBar, private token: TokenStorage) { }
+  constructor(private courseService: CourseService, private activityService: ActivityService, private _snackBar: MatSnackBar, private token: TokenStorage, public dictionary: DictionaryService) { }
 
 
   applyFilter(filterValue: Date) {
@@ -74,7 +74,7 @@ export class CourseActivityListComponent implements OnInit {
   signUp(id: number) : void {
     this.activityService.signUpForActivity(id).subscribe(() => {
       this.refreshActivitiesInfo();
-      this.openSnackBar("Rejestracja na zajęcia przebiegła pomyślnie", "OK")})
+      this.openSnackBar(this.dictionary.successfullySignedInForActivity, "OK")})
   }
 
 }

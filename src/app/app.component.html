@@ -1,51 +1,71 @@
 <div id="bg">
-  <mat-toolbar color="primary">
+  <mat-toolbar color="primary" style="z-index: 2;" class="mat-elevation-z16">
     <mat-toolbar-row>
       <span class="my-spacer"></span>
       <ng-container *ngIf="!isLoggedIn">
         <button mat-button class="my-toolbar-button" [routerLink]="['/']">
           <mat-icon>home</mat-icon>
-          <span class="underline-span">Strona startowa</span>
+          <span class="underline-span">{{dictionary.homepage}}</span>
+        </button>
+        <button mat-button class="my-toolbar-button">
+          <mat-icon>link</mat-icon>
+          <span class="underline-span">{{dictionary.links}}</span>
         </button>
         <button mat-button class="my-toolbar-button" [routerLink]="['/login']">
           <mat-icon>vpn_key</mat-icon>
-          <span class="underline-span">Zaloguj się</span>
+          <span class="underline-span">{{dictionary.signInToPage}}</span>
         </button>
         <button mat-button class="my-toolbar-button" [routerLink]="['/register']">
           <mat-icon>create</mat-icon>
-          <span class="underline-span">Zarejestruj się</span>
+          <span class="underline-span">{{dictionary.signUp}}</span>
         </button>
         <button mat-button class="my-toolbar-button" (click)="changeTheme()">
           <mat-icon>format_paint</mat-icon>
-          <span class="underline-span">Motyw</span>
+          <span class="underline-span">{{dictionary.theme}}</span>
+        </button>
+        <button mat-button class="my-toolbar-button" (click)="changeLanguage()">
+          <mat-icon>language</mat-icon>
+          <span class="underline-span">{{dictionary.currentLanguage}}</span>
         </button>
       </ng-container>
       <ng-container *ngIf="isLoggedIn">
+        <button mat-button class="my-toolbar-button" [routerLink]="['/']">
+          <mat-icon>home</mat-icon>
+          <span class="underline-span">{{dictionary.homepage}}</span>
+        </button>
+        <button mat-button class="my-toolbar-button">
+          <mat-icon>link</mat-icon>
+          <span class="underline-span">{{dictionary.links}}</span>
+        </button>
         <ng-container *ngIf="isAdmin">
-          <button mat-button class="my-toolbar-button" [routerLink]="['/']">
-            <mat-icon>home</mat-icon>
-            <span class="underline-span">Strona startowa</span>
-          </button>
           <button mat-button class="my-toolbar-button" [routerLink]="['/admin/user-list']">
             <mat-icon>verified_user</mat-icon>
-            <span class="underline-span">Panel administratora</span>
+            <span class="underline-span">{{dictionary.adminPanel}}</span>
           </button>
         </ng-container>
+        <button mat-button class="my-toolbar-button" [routerLink]="['/exam']">
+          <mat-icon>timeline</mat-icon>
+          <span class="underline-span">{{dictionary.internalExams}}</span>
+        </button>
         <button mat-button class="my-toolbar-button" [routerLink]="['/course/course-mine-list']">
           <mat-icon>school</mat-icon>
-          <span class="underline-span">Kursy</span>
+          <span class="underline-span">{{dictionary.courses}}</span>
         </button>
         <button mat-button class="my-toolbar-button" [routerLink]="['/chat']">
           <mat-icon>message</mat-icon>
-          <span class="underline-span">Wiadomości</span>
+          <span class="underline-span">{{dictionary.messages}}</span>
         </button>
         <button mat-button class="my-toolbar-button" [routerLink]="['/contact']">
           <mat-icon>contact_mail</mat-icon>
-          <span class="underline-span">Kontakt</span>
+          <span class="underline-span">{{dictionary.contact}}</span>
         </button>
         <button mat-button class="my-toolbar-button" (click)="changeTheme()">
           <mat-icon>format_paint</mat-icon>
-          <span class="underline-span">Motyw</span>
+          <span class="underline-span">{{dictionary.theme}}</span>
+        </button>
+        <button mat-button class="my-toolbar-button" (click)="changeLanguage()">
+          <mat-icon>language</mat-icon>
+          <span class="underline-span">{{dictionary.currentLanguage}}</span>
         </button>
         <button mat-button class="my-toolbar-button" [matMenuTriggerFor]="menu">
           <mat-icon>face</mat-icon>
@@ -54,11 +74,11 @@
         <mat-menu #menu="matMenu">
           <button mat-menu-item [routerLink]="['/profile']">
             <mat-icon>supervised_user_circle</mat-icon>
-            <span>Mój profil</span>
+            <span>{{dictionary.myProfile}}</span>
           </button>
           <button mat-menu-item (click)="signOut()">
             <mat-icon>exit_to_app</mat-icon>
-            <span>Wyloguj się</span>
+            <span>{{dictionary.signOut}}</span>
           </button>
         </mat-menu>
       </ng-container>

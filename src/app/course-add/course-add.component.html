@@ -1,6 +1,6 @@
 <mat-card class="my-card">
     <mat-card-header>
-      <mat-card-title style="text-align: center;">Dodaj kurs</mat-card-title>
+      <mat-card-title style="text-align: center;">{{dictionary.addCourse}}</mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <form class="my-form">
@@ -8,7 +8,7 @@
           <tr>
             <td>
               <mat-form-field class="full-width">
-                <mat-select placeholder="Kategoria" [(ngModel)]="category" name="category" required>
+                <mat-select placeholder="{{dictionary.category}}" [(ngModel)]="category" name="category" required>
                     <mat-option *ngFor="let categoryy of categories" value={{categoryy}}>{{categoryy}}</mat-option>
                 </mat-select>
               </mat-form-field>
@@ -17,14 +17,14 @@
           <tr>
             <td>
               <mat-form-field class="full-width">
-                <input matInput placeholder="Opis" maxlength="256" [(ngModel)]="description" name="description" required>
+                <input matInput placeholder="{{dictionary.description}}" maxlength="256" [(ngModel)]="description" name="description" required>
               </mat-form-field>
             </td>
           </tr>
           <tr>
             <td>
               <mat-form-field class="full-width">
-                <mat-select placeholder="Liczba miejsc" [(ngModel)]="places" name="places" required>
+                <mat-select placeholder="{{dictionary.numberOfPlaces}}" [(ngModel)]="places" name="places" required>
                     <mat-option value=15>15</mat-option>
                     <mat-option value=20>20</mat-option>
                     <mat-option value=25>25</mat-option>
@@ -35,14 +35,14 @@
           <tr>
             <td>
               <mat-form-field class="full-width">
-                <input matInput placeholder="Koszt" [(ngModel)]="cost" name="cost" required>
+                <input matInput placeholder="{{dictionary.price}}" [(ngModel)]="cost" name="cost" required>
               </mat-form-field>
             </td>
           </tr>
           <tr>
             <td>
               <mat-form-field class="full-width">
-                <mat-select placeholder="Login instruktora" [(ngModel)]="instructorUsername" name="instructorUsername" required>
+                <mat-select placeholder="{{dictionary.instructorLogin}}" [(ngModel)]="instructorUsername" name="instructorUsername" required>
                     <mat-option *ngFor="let instructor of instructors" value={{instructor}}>{{instructor}}</mat-option>
                 </mat-select>
               </mat-form-field>
@@ -51,7 +51,7 @@
           <tr>
             <td>
               <mat-form-field class="full-width">
-                <input matInput [matDatepicker]="picker" [min]="minDate" placeholder="Data startu kursu" [(ngModel)]="startDate"
+                <input matInput [matDatepicker]="picker" [min]="minDate" placeholder="{{dictionary.courseStartDate}}" [(ngModel)]="startDate"
                   name="startDate">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
@@ -63,7 +63,7 @@
     </mat-card-content>
     <mat-card-actions>
       <div class="center-container-no-top-margin">
-        <button mat-raised-button color="accent" (click)="addCourse()">Dodaj kurs</button>
+        <button mat-raised-button color="accent" (click)="addCourse()">{{dictionary.addCourse}}</button>
       </div>
     </mat-card-actions>
   </mat-card>

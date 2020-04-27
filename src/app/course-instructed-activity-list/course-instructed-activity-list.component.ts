@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource, MatSnackBar } from '@angular/material';
 import { ActivityDTO } from '../model/activity.model';
-import { CourseService, ActivityService } from '../app.service';
+import { CourseService, ActivityService, DictionaryService } from '../app.service';
 import { TokenStorage } from '../core/token.storage';
 import { DatePipe } from '@angular/common';
 
@@ -23,7 +23,7 @@ export class CourseInstructedActivityListComponent implements OnInit {
   rate: number;
   displayedColumns = ['dateOfActivity', 'timeOfActivity', 'student', 'action', 'second-action']
 
-  constructor(private courseService: CourseService, private activityService: ActivityService, private _snackBar: MatSnackBar, private token: TokenStorage) { }
+  constructor(private courseService: CourseService, private activityService: ActivityService, private _snackBar: MatSnackBar, private token: TokenStorage, public dictionary: DictionaryService) { }
 
 
   applyFilter(filterValue: Date) {

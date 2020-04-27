@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../core/auth.service';
 import { ErrorStateMatcher } from '@angular/material';
 import { FormControl, Validators } from '@angular/forms';
+import { DictionaryService } from '../app.service';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +12,7 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class RegisterComponent  {
 
-  constructor(private router: Router, private authService: AuthService) { }
+  constructor(private router: Router, private authService: AuthService, public dictionary: DictionaryService) { }
 
   public errorMsg;
   username: string = '';

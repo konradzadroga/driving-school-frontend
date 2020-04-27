@@ -12,15 +12,16 @@ import {
   MatSnackBarModule,
   MatMenuModule,
   MatSelectModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
 
 @NgModule({
   imports: [CommonModule, MatToolbarModule, MatButtonModule, MatCardModule, MatInputModule, MatDialogModule, MatTableModule, 
   MatDatepickerModule, MatNativeDateModule, MatGridListModule, MatIconModule, MatDividerModule, MatListModule, MatSnackBarModule, 
-MatMenuModule, MatSelectModule, MatPaginatorModule],
+MatMenuModule, MatSelectModule, MatPaginatorModule, MatProgressSpinnerModule],
   exports: [CommonModule, MatToolbarModule, MatButtonModule, MatCardModule, MatInputModule, MatDialogModule, MatTableModule, 
   MatDatepickerModule, MatNativeDateModule, MatGridListModule, MatIconModule, MatDividerModule, MatListModule, MatSnackBarModule, 
-MatMenuModule, MatSelectModule, MatPaginatorModule],
+MatMenuModule, MatSelectModule, MatPaginatorModule, MatProgressSpinnerModule],
 })
 export class CustomMaterialModule { }

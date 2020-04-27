@@ -1,14 +1,14 @@
 <div class="header-container">
-    <h4>Skontaktuj się z nami za pomocą poniższego formularza.</h4>
-    <h5>Nasza administracja wyśle wiadomość e-mail z odpowiedzią tak szybko jak to będzie możliwe.</h5>
+    <h4>{{dictionary.contactWithUsUsingThisForm}}</h4>
+    <h5>{{dictionary.ourAdminsWillReply}}</h5>
 </div>
 
-<mat-card class="contact-card">
+<mat-card class="contact-card mat-elevation-z12">
     <div class="contact-container">
-        <label for="myTextArea">Tu wpisz swoją wiadomość</label>
+        <label for="myTextArea">{{dictionary.yourMessageThere}}</label>
         <textarea [(ngModel)]=contact.content maxlength=256 class="form-control" #myTextArea rows="5"></textarea>
         <mat-hint>{{myTextArea.value.length}} / 256</mat-hint>
         <button mat-raised-button color="accent" class="send-button" (click)="sendContactRequest()" (click)="lockButton()"
-        [disabled]="buttonLocked">Wyślij</button>
+        [disabled]="buttonLocked">{{dictionary.send}}</button>
     </div>
 </mat-card>

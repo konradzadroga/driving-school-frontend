@@ -1,6 +1,8 @@
-<mat-card class="my-card">
+<mat-card class="mat-elevation-z12 my-card">
   <mat-card-header>
-    <mat-card-title>Zaloguj się</mat-card-title>
+    <div class="my-title" style="text-align: center; width: 300px;">
+      <h5>{{dictionary.signInToPage}}</h5>
+    </div>
   </mat-card-header>
   <mat-card-content>
     <form class="my-form">
@@ -8,9 +10,10 @@
         <tr>
           <td>
             <mat-form-field class="full-width-with-margin">
-              <input matInput placeholder="Login" [(ngModel)]="username" [formControl]="usernameFC" [errorStateMatcher]="matcher" name="username" required>
+              <input matInput placeholder="{{dictionary.login}}" [(ngModel)]="username" [formControl]="usernameFC"
+                [errorStateMatcher]="matcher" name="username" required>
               <mat-error>
-                Login jest wymagany
+                {{dictionary.loginDemanded}}
               </mat-error>
             </mat-form-field>
           </td>
@@ -18,9 +21,10 @@
         <tr>
           <td>
             <mat-form-field class="full-width-with-margin">
-              <input matInput placeholder="Hasło" [(ngModel)]="password" [formControl]="passwordFC" [errorStateMatcher]="matcher" type="password" name="password" required>
+              <input matInput placeholder="{{dictionary.password}}" [(ngModel)]="password" [formControl]="passwordFC"
+                [errorStateMatcher]="matcher" type="password" name="password" required>
               <mat-error>
-                Hasło jest wymagane i musi zawierać co najmniej 6 znaków
+                {{dictionary.passwordDemanded}}
               </mat-error>
             </mat-form-field>
           </td>
@@ -28,7 +32,7 @@
         <tr>
           <td>
             <div *ngIf="loginFailed === true">
-              <span style="color: #b30c49"><i>Niepoprawna nazwa użytkownika lub hasło</i></span>
+              <span style="color: #b30c49"><i>{{dictionary.wrongUsernameOrPassword}}</i></span>
             </div>
           </td>
         </tr>
@@ -37,7 +41,8 @@
   </mat-card-content>
   <mat-card-actions>
     <div class="center-container-no-top-margin">
-      <button mat-raised-button (click)="login()" color="accent" [disabled]="usernameFC.invalid || passwordFC.invalid">Zaloguj się</button>
+      <button mat-raised-button (click)="login()" color="accent"
+        [disabled]="usernameFC.invalid || passwordFC.invalid">{{dictionary.signInToPage}}</button>
     </div>
   </mat-card-actions>
 </mat-card>
@@ -45,8 +50,7 @@
 <mat-divider></mat-divider>
 
 <div class="center-container">
-  <span>Nie posiadasz konta?</span>
+  <span>{{dictionary.youDontHaveAnAcc}}</span>
   <br>
-  <button mat-raised-button class="register-button" color="accent" [routerLink]="['/register']">Zarejestruj
-    się</button>
+  <button mat-raised-button class="register-button" color="accent" [routerLink]="['/register']">{{dictionary.signUp}}</button>
 </div>

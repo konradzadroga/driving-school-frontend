@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import { CourseDTO } from '../model/course.model';
-import { CourseService, UserService } from '../app.service';
+import { CourseService, UserService, DictionaryService } from '../app.service';
 import { TokenStorage } from '../core/token.storage';
 
 @Component({
@@ -16,7 +16,7 @@ export class CourseInstructedComponent implements OnInit {
   courseId: number;
   username: string;
 
-  constructor(private courseService: CourseService, private token: TokenStorage) { }
+  constructor(private courseService: CourseService, private token: TokenStorage, public dictionary: DictionaryService) { }
 
   ngOnInit() {
     this.courseService.currentCourseId.subscribe(courseId => this.courseId = courseId);

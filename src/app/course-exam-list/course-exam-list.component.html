@@ -1,0 +1,42 @@
+<div class="center-container-with-top-and-bottom-margin">
+    <h4>{{dictionary.belowAllExamsWithinCourse}}</h4>
+</div>
+
+<div style="z-index: 0 !important;" class="example-container mat-elevation-z8">
+    <mat-table #table [dataSource]="exams">
+
+        <ng-container matColumnDef="dateOfExam">
+            <mat-header-cell *matHeaderCellDef>{{dictionary.date}}</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.dateOfExam.substring(0,10)}} </mat-cell>
+        </ng-container>
+        
+        <ng-container matColumnDef="timeOfExam">
+            <mat-header-cell *matHeaderCellDef>{{dictionary.hour}}</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.dateOfExam.substring(11,16)}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="instructorNameAndSurname">
+            <mat-header-cell *matHeaderCellDef>{{dictionary.instructor</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.instructorNameAndSurname}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="occupied">
+            <mat-header-cell *matHeaderCellDef>{{dictionary.isThisDateReserved}}</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <ng-container *ngIf="element.occupied==true">{{dictionary.yes}}</ng-container>
+                <ng-container *ngIf="element.occupied==false">{{dictionary.no}}</ng-container>
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="signIn">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <button mat-raised-button color="primary" [disabled]="element.occupied" (click)="signInForAnExam(element.id)">{{dictionary.signIn}}</button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="examsDisplayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: examsDisplayedColumns;"></mat-row>
+
+    </mat-table>
+</div>

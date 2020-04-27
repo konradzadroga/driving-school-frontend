@@ -1,4 +1,4 @@
-<div class='container-fluid'>
+<div class='container-fluid' style="margin-top: 20px;">
     <div class='col-12'>
         <ngb-carousel>
             <ng-template ngbSlide>
@@ -6,7 +6,7 @@
                     <img class="slide-image" src="assets/images/1.jpg">
                 </div>
                 <div class="carousel-caption">
-                    <h3 style="color: white">Zdawalność powyżej 50%</h3>
+                    <h3 style="color: white">{{dictionary.passingOver50}}</h3>
                 </div>
             </ng-template>
             <ng-template ngbSlide>
@@ -14,7 +14,7 @@
                     <img class="slide-image" src="assets/images/2.jpg">
                 </div>
                 <div class="carousel-caption">
-                    <h3 style="color: white">Na rynku od 1980 roku</h3>
+                    <h3 style="color: white">{{dictionary.since1980}}</h3>
                 </div>
             </ng-template>
             <ng-template ngbSlide>
@@ -22,7 +22,7 @@
                     <img class="slide-image" src="assets/images/3.jpg">
                 </div>
                 <div class="carousel-caption">
-                    <h3 style="color: white">Wykształceni instruktorzy</h3>
+                    <h3 style="color: white">{{dictionary.qualifiedInstructors}}</h3>
                 </div>
             </ng-template>
         </ngb-carousel>

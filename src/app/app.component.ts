@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserService } from './app.service';
+import { UserService, DictionaryService } from './app.service';
 import { TokenStorage } from './core/token.storage';
 import { Router } from '@angular/router';
 
@@ -18,7 +18,8 @@ export class AppComponent {
   roles: string[] = [];
   username: string = '';
 
-  constructor(private token: TokenStorage, private router: Router) {
+  constructor(private token: TokenStorage, private router: Router, private dictionary: DictionaryService) {
+    this.dictionary.setLanguage("pl");
     document.body.classList.add('dark-theme');
     if (token.isUserSignedIn()) {
       this.isLoggedIn = true;
@@ -42,6 +43,14 @@ export class AppComponent {
     } else {
       document.body.classList.remove('dark-theme');
       document.body.classList.add('default-theme');
+    }
+  }
+
+  changeLanguage() {
+    if (this.dictionary.getLanguage() === 'pl') {
+      this.dictionary.setLanguage('en')
+    } else if (this.dictionary.getLanguage() === 'en') {
+      this.dictionary.setLanguage('pl')
     }
   }
 

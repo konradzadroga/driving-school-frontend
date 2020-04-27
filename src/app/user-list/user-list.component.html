@@ -1,32 +1,36 @@
-<div class="example-container mat-elevation-z8">
+<div class="center-container-with-top-and-bottom-margin">
+  <h4>{{dictionary.belowListOfUsers}}</h4>
+</div>
+
+<div class="example-container mat-elevation-z8" style="z-index: 0 !important;">
   <mat-table #table [dataSource]="allUsers">
     <ng-container matColumnDef="username">
-      <mat-header-cell *matHeaderCellDef>Login</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>{{dictionary.login}}</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.username}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef>Imię</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>{{dictionary.name}}</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="surname">
-      <mat-header-cell *matHeaderCellDef>Nazwisko</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>{{dictionary.surname}}</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.surname}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="email">
-      <mat-header-cell *matHeaderCellDef>E-mail</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>{{dictionary.email}}</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="roles">
-      <mat-header-cell *matHeaderCellDef>Uprawnienia</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>{{dictionary.permissions}}</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.roles}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="action">
-      <mat-header-cell *matHeaderCellDef>Akcja</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>{{dictionary.action}}</mat-header-cell>
       <mat-cell *matCellDef="let element">
         <button mat-icon-button [matMenuTriggerFor]="menu">
           <mat-icon>more_vert</mat-icon>
@@ -38,11 +42,11 @@
           </button> -->
           <button mat-menu-item (click)="makeUserAdmin(element.username)">
             <mat-icon>verified_user</mat-icon>
-            <span>Nadaj uprawnienia administratora</span>
+            <span>{{dictionary.grantAdminPermissions}}</span>
           </button>
           <button mat-menu-item (click)="makeUserInstructor(element.username)">
             <mat-icon>book</mat-icon>
-            <span>Nadaj uprawnienia instruktora</span>
+            <span>{{dictionary.grantInstructorPermissions}}</span>
           </button>
         </mat-menu>
       </mat-cell>

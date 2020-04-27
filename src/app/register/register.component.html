@@ -1,6 +1,9 @@
-<mat-card class="my-card">
+<mat-card class="my-card mat-elevation-z8">
   <mat-card-header>
-    <mat-card-title style="text-align: center;">Zarejestruj się</mat-card-title>
+    <mat-card-title style="text-align: center;"><div class="my-title" style="text-align: center; width: 350px;">
+      <h5>{{dictionary.signUp}}</h5>
+    </div>
+  </mat-card-title>
   </mat-card-header>
   <mat-card-content>
     <form class="my-form">
@@ -8,10 +11,10 @@
         <tr>
           <td>
             <mat-form-field class="full-width-with-margin">
-              <input matInput placeholder="Login" [(ngModel)]="username" name="username" [formControl]="usernameFC"
+              <input matInput placeholder="{{dictionary.login}}" [(ngModel)]="username" name="username" [formControl]="usernameFC"
                 [errorStateMatcher]="matcher" required>
               <mat-error *ngIf="usernameFC.hasError('required')">
-                Login jest wymagany
+                {{dictionary.loginDemanded}}
               </mat-error>
             </mat-form-field>
           </td>
@@ -19,10 +22,10 @@
         <tr>
           <td>
             <mat-form-field class="full-width-with-margin">
-              <input matInput placeholder="Imię" [(ngModel)]="name" type="name" [formControl]="nameFC" name="name"
+              <input matInput placeholder="{{dictionary.name}}" [(ngModel)]="name" type="name" [formControl]="nameFC" name="name"
                 [errorStateMatcher]="matcher" required>
               <mat-error *ngIf="nameFC.hasError('required')">
-                Imię jest wymagane
+                {{dictionary.nameIsDemanded}}
               </mat-error>
             </mat-form-field>
           </td>
@@ -30,10 +33,10 @@
         <tr>
           <td>
             <mat-form-field class="full-width-with-margin">
-              <input matInput placeholder="Nazwisko" [(ngModel)]="surname" [formControl]="surnameFC" name="surname"
+              <input matInput placeholder="{{dictionary.surname}}" [(ngModel)]="surname" [formControl]="surnameFC" name="surname"
                 [errorStateMatcher]="matcher" required>
               <mat-error *ngIf="surnameFC.hasError('required')">
-                Nazwisko jest wymagane
+                {{dictionary.surnameIsDemanded}}
               </mat-error>
             </mat-form-field>
           </td>
@@ -41,10 +44,10 @@
         <tr>
           <td>
             <mat-form-field class="full-width-with-margin">
-              <input matInput placeholder="E-mail" [(ngModel)]="email" name="email" [formControl]="emailFC"
+              <input matInput placeholder="{{dictionary.email}}" [(ngModel)]="email" name="email" [formControl]="emailFC"
                 [errorStateMatcher]="matcher" required>
               <mat-error *ngIf="emailFC.hasError('required')">
-                E-mail jest wymagany
+                {{dictionary.emailIsDemanded}}
               </mat-error>
             </mat-form-field>
           </td>
@@ -52,10 +55,10 @@
         <tr>
           <td>
             <mat-form-field class="full-width-with-margin">
-              <input matInput placeholder="Numer PESEL" [(ngModel)]="pesel" name="pesel" [formControl]="peselFC"
+              <input matInput placeholder="{{dictionary.pesel}}" [(ngModel)]="pesel" name="pesel" [formControl]="peselFC"
                 [errorStateMatcher]="matcher" required>
               <mat-error>
-                PESEL jest wymagany i musi zawierać 11 znaków
+                {{dictionary.peselIsDemanded}}
               </mat-error>
             </mat-form-field>
           </td>
@@ -64,12 +67,12 @@
           <td>
             <mat-form-field class="full-width-with-margin">
               <input matInput [matDatepicker]="picker" [max]="maxDate" [formControl]="birthdateFC"
-                [errorStateMatcher]="matcher" placeholder="Data urodzenia" [(ngModel)]="birthdate" name="birthdate"
+                [errorStateMatcher]="matcher" placeholder="{{dictionary.dateOfBirth}}" [(ngModel)]="birthdate" name="birthdate"
                 required>
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
               <mat-error *ngIf="birthdateFC.hasError('required')">
-                Data urodzenia jest wymagana
+                {{dictionary.dateOfBirthIsDemanded}}
               </mat-error>
             </mat-form-field>
           </td>
@@ -77,9 +80,9 @@
         <tr>
           <td>
             <mat-form-field class="full-width-with-margin">
-              <input matInput placeholder="Hasło" [(ngModel)]="password" [formControl]="passwordFC" [errorStateMatcher]="matcher" type="password" name="password" required>
+              <input matInput placeholder="dictionary.password" [(ngModel)]="password" [formControl]="passwordFC" [errorStateMatcher]="matcher" type="password" name="password" required>
               <mat-error>
-                Hasło jest wymagane i musi posiadać co najmniej 6 znaków
+                {{dictionary.passwordDemanded}}
               </mat-error>
             </mat-form-field>
           </td>
@@ -95,7 +98,7 @@
   <mat-card-actions>
     <div class="center-container-no-top-margin">
       <button mat-raised-button (click)="register()" color="accent" [disabled] = "buttonLocked || usernameFC.invalid || nameFC.invalid || surnameFC.invalid || emailFC.invalid || peselFC.invalid || birthdateFC.invalid || passwordFC.invalid"
-        (click)="lockButton()">Zarejestruj się</button>
+        (click)="lockButton()">{{dictionary.signUp}}</button>
     </div>
   </mat-card-actions>
 </mat-card>
@@ -103,7 +106,7 @@
 <mat-divider></mat-divider>
 
 <div class="center-container">
-  <span>Masz już konto?</span>
+  <span>{{dictionary.ouAlreadyHaveAnAcc}}</span>
   <br>
-  <button mat-raised-button class="login-button" color="accent" [routerLink]="['/login']">Zaloguj się</button>
+  <button mat-raised-button class="login-button" color="accent" [routerLink]="['/login']">{{dictionary.signInToPage}}</button>
 </div>

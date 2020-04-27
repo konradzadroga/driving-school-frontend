@@ -1,8 +1,8 @@
 <mat-card class="contact-card">
     <div class="contact-container">
-        <label for="myTextArea">Tu wpisz swoj komentarz</label>
+        <label for="myTextArea">{{dictionary.thereTypeYourComment}}</label>
         <textarea [(ngModel)]=comment maxlength=256 class="form-control" #myTextArea rows="5"></textarea>
         <mat-hint>{{myTextArea.value.length}} / 256</mat-hint>
-        <button class="send-button" mat-raised-button color="accent" (click)="sendComment()">Wyślij</button>
+        <button class="send-button" mat-raised-button color="accent" (click)="sendComment()">{{dictionary.send}}</button>
     </div>
 </mat-card>

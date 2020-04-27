@@ -1,19 +1,23 @@
-<div class="example-container mat-elevation-z8">
+<div class="center-container-with-top-and-bottom-margin">
+    <h4>{{dictionary.belowAllCoursesYouAreInstructorTo}}</h4>
+</div>
+
+<div class="example-container mat-elevation-z8" style="z-index: 0 !important;">
     <mat-table #table [dataSource]="myCourses">
 
         <ng-container matColumnDef="category">
-            <mat-header-cell *matHeaderCellDef>Kategoria</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>{{dictionary.category}}</mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.category}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="description">
-            <mat-header-cell *matHeaderCellDef>Opis</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>{{dictionary.description}}</mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
         </ng-container>
 
 
         <ng-container matColumnDef="startdate">
-            <mat-header-cell *matHeaderCellDef>Data rozpoczęcia</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>{{dictionary.startDate}}</mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.startdate.substring(0,10)}} </mat-cell>
         </ng-container>
 
@@ -21,7 +25,7 @@
             <mat-header-cell *matHeaderCellDef></mat-header-cell>
             <mat-cell *matCellDef="let element">
                 <button mat-raised-button color="primary" (click)="selectCourseId(element.id)"
-                    [routerLink]="['../course-instructed-activities']">Zajęcia</button>
+                    [routerLink]="['../course-instructed-activities']">{{dictionary.activities}}</button>
             </mat-cell>
         </ng-container>
 

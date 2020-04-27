@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import { CourseDTO } from '../model/course.model';
-import { CourseService, UserService } from '../app.service';
+import { CourseService, UserService, DictionaryService } from '../app.service';
 import { UserDTO } from '../model/user.model';
 
 @Component({
@@ -11,12 +11,12 @@ import { UserDTO } from '../model/user.model';
 })
 export class CourseMineListComponent implements OnInit {
 
-  myCoursesDisplayedColumns = ['category', 'description', 'startdate', 'instructorNameAndSurname', 'action'];
+  myCoursesDisplayedColumns = ['category', 'description', 'startdate', 'instructorNameAndSurname', 'action', 'exam'];
   myCourses = new MatTableDataSource<CourseDTO>();
   courseId: number;
   user: UserDTO;
 
-  constructor(private courseService: CourseService, private userService: UserService) { }
+  constructor(private courseService: CourseService, private userService: UserService, public dictionary: DictionaryService) { }
 
   ngOnInit() {
     this.courseService.currentCourseId.subscribe(courseId => this.courseId = courseId);
